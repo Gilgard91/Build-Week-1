@@ -108,30 +108,61 @@ window.onload = () => {
   // });
 
   const newQuestion = function () {
+    let questionNumber = 2;
     const questionContainer = document.getElementById("question-container");
     const buttonContainer = document.getElementById("buttons-container");
-    for (let i = 0; i < questions.length; i++) {
-      const questionText = document.createElement("h3");
-      questionText.innerText = questions[i].question;
-      questionContainer.appendChild(questionText);
-      if (questions[i].type === "multiple") {
-        const correctButtons = document.createElement("button");
-        correctButtons.innerText = questions[i].correct_answer;
-        buttonContainer.appendChild(correctButtons);
-        for (let j = 0; j < questions[i].incorrect_answers.length; j++) {
-          const incorrectAnswerButton = document.createElement("button");
-          incorrectAnswerButton.innerText = questions[i].incorrect_answers[j];
-          buttonContainer.appendChild(incorrectAnswerButton);
-        }
-      } else if (questions[i].type === "boolean") {
-        const booleanButton1 = document.createElement("button");
-        booleanButton1.innerText = "True";
-        const booleanButton2 = document.createElement("button");
-        booleanButton2.innerText = "False";
-        buttonContainer.appendChild(booleanButton1);
-        buttonContainer.appendChild(booleanButton2);
+
+    const questionText = document.createElement("h3");
+    questionText.innerText = questions[questionNumber].question;
+
+    questionContainer.appendChild(questionText);
+    questionContainer.appendChild(buttonContainer);
+
+    if (questions[questionNumber].type === "multiple") {
+      const newCorrectBtn = document.createElement("button");
+      newCorrectBtn.innerText = questions[questionNumber].correct_answer;
+      buttonContainer.appendChild(newCorrectBtn);
+      for (
+        let i = 0;
+        i < questions[questionNumber].incorrect_answers.length;
+        i++
+      ) {
+        const newBtn = document.createElement("button");
+        newBtn.innerText = questions[questionNumber].incorrect_answers[i];
+        buttonContainer.appendChild(newBtn);
       }
+    } else if (questions[questionNumber].type === "boolean") {
+      const booleanButton1 = document.createElement("button");
+      booleanButton1.innerText = "True";
+      const booleanButton2 = document.createElement("button");
+      booleanButton2.innerText = "False";
+      buttonContainer.appendChild(booleanButton1);
+      buttonContainer.appendChild(booleanButton2);
     }
+    // setInterval(() => {
+    // for (let i = 0; i < questions.length; i++) {
+    //   questionText.innerText = questions[i].question;
+    //   if (questions[i].type === "multiple") {
+    //     const correctButtons = document.createElement("button");
+    //     correctButtons.innerText = questions[i].correct_answer;
+    //     buttonContainer.appendChild(correctButtons);
+    //     for (let j = 0; j < questions[i].incorrect_answers.length; j++) {
+    //       const incorrectAnswerButton = document.createElement("button");
+    //       incorrectAnswerButton.innerText = questions[i].incorrect_answers[j];
+    //       buttonContainer.appendChild(incorrectAnswerButton);
+    //     }
+    //   } else if (questions[i].type === "boolean") {
+    //     const booleanButton1 = document.createElement("button");
+    //     booleanButton1.innerText = "True";
+    //     const booleanButton2 = document.createElement("button");
+    //     booleanButton2.innerText = "False";
+    //     buttonContainer.appendChild(booleanButton1);
+    //     buttonContainer.appendChild(booleanButton2);
+    //   }
+    //   i++;
+    //   break;
+    // }
+    // }, 1000);
   };
   newQuestion();
 };
