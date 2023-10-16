@@ -4,9 +4,10 @@ window.onload = () => {
   checkbox.addEventListener("change", function () {
     if (checkbox.checked) {
       submitButton.removeAttribute("disabled");
-      submitButton.classList.add("checkedButton");
+      submitButton.classList.add("active");
     } else {
       submitButton.setAttribute("disabled", "disabled");
+      submitButton.classList.remove("active");
     }
   });
 };
