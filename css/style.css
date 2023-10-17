@@ -11,7 +11,6 @@ body {
 
 #main-content {
   width: 1000px;
-  /* min-height: 600px; */
   margin-inline: auto;
   padding: 2.5em 0 5em 0;
   position: relative;
@@ -147,8 +146,6 @@ img {
   font-weight: 500;
   font-size: 25px;
   letter-spacing: 0.3rem;
-  /* display: inline-block;
-    margin: 0 auto; */
 }
 
 #question-span {
@@ -211,7 +208,6 @@ h3 {
 }
 
 #countdown {
-  /* margin: auto; */
   margin-top: 100px;
   height: 40px;
   width: 40px;
@@ -223,16 +219,13 @@ h3 {
   font-size: 50px;
   position: absolute;
   color: white;
-  /* display: inline-block; */
   line-height: 40px;
-  /* position: fixed; */
   top: 6rem;
   right: 6rem;
 }
 
 svg {
   position: absolute;
-  /* position: relative; */
   top: 3rem;
   right: -2rem;
   width: 140px;
