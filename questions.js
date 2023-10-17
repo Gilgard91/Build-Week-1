@@ -171,8 +171,8 @@ const creaDomanda = function (questionObj) {
 let i = 0;
 const start = function () {
   //start() controlla che ci siano domande disponibili
-  if (i > questions.length) {
-    // funzione per pagina grafico
+  if (i > questions.length - 1) {
+    generaRisultato();
   } else {
     creaDomanda(questions[i]); //chiamo il metodo creaDomanda passandogli la domanda
     i++;
@@ -204,4 +204,35 @@ const submitRisposta = function (question) {
     result++;
   }
   start();
+};
+
+const generaRisultato = function () {
+  let mainContent = document.getElementById("box-domanda");
+  mainContent.remove();
+  mainContent.removeAttribute("min-height");
+  let timerContainer = document.getElementById("countdown");
+  timerContainer.remove()
+  let footerContent = document.getElementsByTagName("footer")[0];
+  footerContent.remove();
+  let nav = document.getElementById("questions-nav");
+  nav.style.marginBottom = "0";
+  document.getElementById("chart-container").style.display = "block";
+
+
+  let ctx = document.getElementById("myDoughnutChart").getContext("2d");
+
+  let data = {
+    datasets: [
+      {
+        data: [result, 10 - result],
+        backgroundColor: ["#00FFFF", "#D20094"]
+      }
+    ]
+  };
+
+  let myDoughnutChart = new Chart(ctx, {
+    type: "doughnut",
+    data: data,
+    options: { cutout: "70%", borderWidth: 0}
+  });
 };
