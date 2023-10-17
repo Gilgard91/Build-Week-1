@@ -98,14 +98,14 @@ window.onload = function () {
   start();
 };
 
-
-let result = 0;  //variabile che aumenta di 1 ad ogni risposta corretta
+let result = 0; //variabile che aumenta di 1 ad ogni risposta corretta
 let timerInterval; //salvo la variabile per utilizzarla come parametro di clearInterval
-let rispostaSelezionata; //salvo la risposta che viene cliccata 
+let rispostaSelezionata; //salvo la risposta che viene cliccata
 
 const creaDomanda = function (questionObj) {
   const answers = questionObj.incorrect_answers; //creo array con tutte le risposte sbagliate e pusho quella giusta dentro lo stesso array per avercele tutte insieme
   answers.push(questionObj.correct_answer);
+  const shuffledAnswers = shuffleArray(answers);
   let mainContent = document.getElementById("box-domanda");
   mainContent.innerHTML = ""; //pulisco il container delle domande
   clearInterval(timerInterval); //se c'è un setInterval attivo, la funziona clearInterval lo stoppa
@@ -114,32 +114,36 @@ const creaDomanda = function (questionObj) {
   circleTimer.parentNode.replaceChild(newCircle, circleTimer);
   let containerDomanda = document.createElement("h1");
   containerDomanda.setAttribute("id", "question");
-  containerDomanda.innerText = questionObj.question; //cambio l'innertext del container con la stringa relativa alla domanda 
+  containerDomanda.innerText = questionObj.question; //cambio l'innertext del container con la stringa relativa alla domanda
   let containerRisposte = document.createElement("div");
   containerRisposte.setAttribute("id", "buttons");
-  
-  for (let i = 0; i < answers.length; i++) {  //faccio un for per leggere tutti gli elementi dall'array delle risposte
+
+  for (let i = 0; i < shuffledAnswers.length; i++) {
+    //faccio un for per leggere tutti gli elementi dall'array delle risposte
     let bottoneRisposta = document.createElement("button"); //per ogni possibile risposta creo un bottone
     bottoneRisposta.classList.add("answer-button");
     bottoneRisposta.type = "button";
-    bottoneRisposta.innerText = answers[i]; //assegno all'innertext del bottone la stringa corrispondente alla risposta
-    bottoneRisposta.onclick = (e) => { //ad ognuno dei bottoni assegno una funzione onclick 
-      rispostaSelezionata = answers[i]; //salvo la risposta data in rispostaSelezionata
+    bottoneRisposta.innerText = shuffledAnswers[i]; //assegno all'innertext del bottone la stringa corrispondente alla risposta
+    bottoneRisposta.onclick = (e) => {
+      //ad ognuno dei bottoni assegno una funzione onclick
+      rispostaSelezionata = shuffledAnswers[i]; //salvo la risposta data in rispostaSelezionata
       console.log(rispostaSelezionata);
       unselectPreviousButton();
       e.currentTarget.classList.add("selected"); //assegno lo stile al bottone selezionato
     };
     containerRisposte.appendChild(bottoneRisposta); //appendo il bottone al container delle risposte
   }
-  
+
   let timer = 30;
   let divTimer = document.getElementById("timer");
   divTimer.style.right = "0.5rem";
   divTimer.innerText = timer; //cambio l'innertext in modo che parta sempre da 30
-  timerInterval = setInterval(() => { //questo setInterval esegue tutto il codice ogni 1000ms (1 secondo)
+  timerInterval = setInterval(() => {
+    //questo setInterval esegue tutto il codice ogni 1000ms (1 secondo)
     timer--;
     divTimer.innerText = timer;
-    if (("" + timer).includes("1") && timer >= 10) {   //faccio diventare timer una stringa per usare il metodo includes()
+    if (("" + timer).includes("1") && timer >= 10) {
+      //faccio diventare timer una stringa per usare il metodo includes()
       divTimer.style.right = "0.8rem";
     } else if (("" + timer).includes("1") && timer < 10) {
       divTimer.style.right = "1.5rem";
@@ -148,7 +152,8 @@ const creaDomanda = function (questionObj) {
     } else if (timer >= 10) {
       divTimer.style.right = "0.5rem";
     }
-    if (timer < 1) { //se il timer scade, manda la risposta selezionata e passa alla domanda successiva
+    if (timer < 1) {
+      //se il timer scade, manda la risposta selezionata e passa alla domanda successiva
       submitRisposta(questionObj);
     }
   }, 1000);
@@ -164,7 +169,8 @@ const creaDomanda = function (questionObj) {
 };
 
 let i = 0;
-const start = function () {  //start() controlla che ci siano domande disponibili
+const start = function () {
+  //start() controlla che ci siano domande disponibili
   if (i > questions.length) {
     // funzione per pagina grafico
   } else {
@@ -182,10 +188,17 @@ const unselectPreviousButton = function () {
   }
 };
 
+const shuffleArray = function (array) {  //creo una funzione shuffle per randomizzare la disposizione delle risposte
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
 const submitRisposta = function (question) {
   if (question.correct_answer === rispostaSelezionata) {
     result++;
   }
-  start(); 
+  start();
 };
-
