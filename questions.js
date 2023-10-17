@@ -109,6 +109,9 @@ const creaDomanda = function (questionObj) {
   let mainContent = document.getElementById("box-domanda");
   mainContent.innerHTML = ""; //pulisco il container delle domande
   clearInterval(timerInterval); //se c'è un setInterval attivo, la funziona clearInterval lo stoppa
+  const circleTimer = document.getElementById("circle");
+  const newCircle = circleTimer.cloneNode(true);
+  circleTimer.parentNode.replaceChild(newCircle, circleTimer);
   let containerDomanda = document.createElement("h1");
   containerDomanda.setAttribute("id", "question");
   containerDomanda.innerText = questionObj.question; //cambio l'innertext del container con la stringa relativa alla domanda 
