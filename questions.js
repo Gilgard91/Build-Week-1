@@ -188,10 +188,13 @@ const unselectPreviousButton = function () {
   }
 };
 
-const shuffleArray = function (array) {  //creo una funzione shuffle per randomizzare la disposizione delle risposte
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+const shuffleArray = function (array) {
+  //creo una funzione shuffle per randomizzare la disposizione delle risposte
+  if (array.type === "multiple") {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
   }
   return array;
 };
