@@ -201,7 +201,7 @@ h3{
   #circle {
     stroke-dasharray: 377px;
     stroke-dashoffset: 0px;
-    stroke-linecap: round;
+    stroke-linecap: square;
     stroke-width: 15px;
     stroke: #00ffff;
     fill: none;
