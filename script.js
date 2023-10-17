@@ -95,20 +95,20 @@ window.onload = () => {
     },
   ];
 
-  // const checkbox = document.getElementById("agree");
-  // const submitButton = document.getElementById("proceed");
-  // checkbox.addEventListener("change", function () {
-  //   if (checkbox.checked) {
-  //     submitButton.removeAttribute("disabled");
-  //     submitButton.classList.add("active");
-  //   } else {
-  //     submitButton.setAttribute("disabled", "disabled");
-  //     submitButton.classList.remove("active");
-  //   }
-  // });
+  const checkbox = document.getElementById("agree");
+  const submitButton = document.getElementById("proceed");
+  checkbox.addEventListener("change", function () {
+    if (checkbox.checked) {
+      submitButton.removeAttribute("disabled");
+      submitButton.classList.add("active");
+    } else {
+      submitButton.setAttribute("disabled", "disabled");
+      submitButton.classList.remove("active");
+    }
+  });
 
   const newQuestion = function () {
-    let questionNumber = 2;
+    let questionNumber = 5;
     const questionContainer = document.getElementById("question-container");
     const buttonContainer = document.getElementById("buttons-container");
 
@@ -139,30 +139,7 @@ window.onload = () => {
       buttonContainer.appendChild(booleanButton1);
       buttonContainer.appendChild(booleanButton2);
     }
-    // setInterval(() => {
-    // for (let i = 0; i < questions.length; i++) {
-    //   questionText.innerText = questions[i].question;
-    //   if (questions[i].type === "multiple") {
-    //     const correctButtons = document.createElement("button");
-    //     correctButtons.innerText = questions[i].correct_answer;
-    //     buttonContainer.appendChild(correctButtons);
-    //     for (let j = 0; j < questions[i].incorrect_answers.length; j++) {
-    //       const incorrectAnswerButton = document.createElement("button");
-    //       incorrectAnswerButton.innerText = questions[i].incorrect_answers[j];
-    //       buttonContainer.appendChild(incorrectAnswerButton);
-    //     }
-    //   } else if (questions[i].type === "boolean") {
-    //     const booleanButton1 = document.createElement("button");
-    //     booleanButton1.innerText = "True";
-    //     const booleanButton2 = document.createElement("button");
-    //     booleanButton2.innerText = "False";
-    //     buttonContainer.appendChild(booleanButton1);
-    //     buttonContainer.appendChild(booleanButton2);
-    //   }
-    //   i++;
-    //   break;
-    // }
-    // }, 1000);
+
+    newQuestion();
   };
-  newQuestion();
 };
