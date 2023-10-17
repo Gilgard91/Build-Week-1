@@ -79,6 +79,7 @@ label {
   color: #093357;
   box-shadow: 0px 0px 20px 8px #00ffff75;
   cursor: pointer;
+  transition: background-color 1.2s;
 }
 
 #timer{
@@ -164,6 +165,7 @@ h3{
 
 .answer-button.selected{
     background: linear-gradient(0deg, rgba(121,0,85,1) 0%, rgba(210,0,148,1) 100%);
+    transition: background-color 1.2s;
 }
 
 #countdown {
@@ -225,3 +227,5 @@ h3{
       stroke-dashoffset: 377px;
     }
   }
+
+  
