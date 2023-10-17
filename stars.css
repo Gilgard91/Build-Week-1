@@ -1,0 +1,9 @@
+.feedbackStars {
+  font-size: 4rem;
+  color: #0b113b;
+  display: inline-block;
+}
+
+.feedbackStarsRating {
+  color: #00ffff;
+}
