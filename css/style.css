@@ -201,11 +201,14 @@ h3 {
   border: 0;
 }
 
-.answer-button.selected{
-    background: linear-gradient(0deg, rgba(121,0,85,1) 0%, rgba(210,0,148,1) 100%);
-    transition: background-color 1.2s;}
-
-
+.answer-button.selected {
+  background: linear-gradient(
+    0deg,
+    rgba(121, 0, 85, 1) 0%,
+    rgba(210, 0, 148, 1) 100%
+  );
+  transition: background-color 1.2s;
+}
 
 #countdown {
   /* margin: auto; */
@@ -261,17 +264,6 @@ svg {
   from {
     stroke-dashoffset: 0px;
   }
-  
-  @keyframes countdown {
-    from {
-      stroke-dashoffset: 0px;
-    }
-    to {
-      stroke-dashoffset: 377px;
-    }
-  }
-
-  
   to {
     stroke-dashoffset: 377px;
   }
