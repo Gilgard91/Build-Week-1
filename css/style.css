@@ -9,11 +9,16 @@ body {
   margin: 0;
 }
 
-.main-content {
+#main-content {
   width: 1000px;
-  height: 100vh;
+  /* min-height: 600px; */
   margin-inline: auto;
   padding: 2.5em 0 5em 0;
+  position: relative;
+}
+
+.content{
+    min-height: 450px;
 }
 
 nav {
@@ -86,7 +91,7 @@ img{
 
 #question{
   font-family: "Outfit", sans-serif;
-  font-size: 50px;
+  font-size: 45px;
   margin-bottom: 1em;
   font-weight: 400;
   line-height: 55px;
@@ -119,13 +124,14 @@ h3{
 }
 
 #questions-nav{
-    margin-bottom: 8em;
+    margin-bottom: 4em;
 }
 
 .answer-button{
+    cursor:pointer;
     font-family: "Outfit", sans-serif;
     display: inline-block;
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 500;
     border-radius: 60px;
     height: 90px;
@@ -135,6 +141,8 @@ h3{
     background-color: #ffffff1a;
     box-shadow: inset 2px 2px 3px 1px;
     
+   
+    
 }
 
 #buttons{
@@ -142,6 +150,7 @@ h3{
 }
 
 #next-question-button{
+    cursor: pointer;
     background-color: #ffffff00;
     box-shadow: inset 0px 0px 0 1.5px;
     color: white;
@@ -152,3 +161,67 @@ h3{
     border: 0;
 
 }
+
+.answer-button.selected{
+    background: linear-gradient(0deg, rgba(121,0,85,1) 0%, rgba(210,0,148,1) 100%);
+}
+
+#countdown {
+    
+    /* margin: auto; */
+    margin-top: 100px;
+    height: 40px;
+    width: 40px;
+    text-align: right;
+  }
+  
+  #timer {
+    font-family: "Outfit", sans-serif;
+    font-size: 50px;
+    position: absolute;
+    color: white;
+    /* display: inline-block; */
+    line-height: 40px;
+    /* position: fixed; */
+    top: 6rem;
+    right: 6rem;
+  }
+  
+  svg {
+    position: absolute; 
+    /* position: relative; */
+    top: 3rem;
+    right: -2rem;
+    width: 140px;
+    height: 140px;
+    
+    transform: rotateY(-180deg) rotateZ(-90deg); 
+  }
+  
+  #circle {
+    stroke-dasharray: 377px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: square;
+    stroke-width: 15px;
+    stroke: #00ffff;
+    fill: none;
+    animation: countdown 30s linear infinite forwards;
+  }
+
+  #circle-below{
+    stroke-dasharray: 377px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+    stroke-width: 15px;
+    stroke: rgba(255, 255, 255, 0.477);
+    fill: none;
+  }
+  
+  @keyframes countdown {
+    from {
+      stroke-dashoffset: 0px;
+    }
+    to {
+      stroke-dashoffset: 377px;
+    }
+  }
