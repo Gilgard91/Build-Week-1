@@ -36,27 +36,63 @@
           </svg>
         </div>
       </nav>
-      <div id="chart-container-outer">
-        <div id="results-div">
-          <h2 id="results-h2">Results</h2>
-          <p id="results-p">The summary of your answers:</p>
-        </div>
-        <div id="correct-div">
-          <h2 id="correct-h2">Correct</h2>
-          <span id="correct-percent"></span><br /><span
-            id="right-answers"
-          ></span>
-        </div>
-        <div id="wrong-div">
-          <h2 id="wrong-h2">Wrong</h2>
-          <span id="wrong-percent"></span><br />
-          <span id="wrong-answers"></span>
-        </div>
-        <div id="chart-container">
-          <canvas id="myDoughnutChart"></canvas>
-        </div>
-        <button id="rateus-button">RATE US</button>
+
+      <div id="results-div">
+        <h2 id="results-h2">Results</h2>
+        <p id="results-p">The summary of your answers:</p>
       </div>
+      <div id="correct-div">
+        <h2 id="correct-h2">Correct</h2>
+        <span id="correct-percent"></span><br /><span id="right-answers"></span>
+      </div>
+      <div id="wrong-div">
+        <h2 id="wrong-h2">Wrong</h2>
+        <span id="wrong-percent"></span><br />
+        <span id="wrong-answers"></span>
+      </div>
+      <div id="result-text-div">
+        <h3 id="result-text-title">
+          Congratulations! <br /><span id="result-text-span">You passed the exam.</span
+          >
+        </h3>
+        <p id="result-text-p">
+          We'll send you the certificate <br />in few minutes. <br />Check your
+          email (including <br />promotions / spam folder)
+        </p>
+      </div>
+      <div id="chart-container">
+        <svg width="100%" height="100%" viewbox="0 0 42 42" class="donut">
+          <circle
+            class="hole"
+            cx="21"
+            cy="21"
+            r="15.91549430918954"
+            fill="#00000000"
+          ></circle>
+          <circle
+            class="ring"
+            cx="21"
+            cy="21"
+            r="15.91549430918954"
+            fill="transparent"
+            stroke="#D20094"
+            stroke-width="5"
+          ></circle>
+          <circle
+            class="segment"
+            cx="21"
+            cy="21"
+            r="15.91549430918954"
+            fill="transparent"
+            stroke="#00FFFF"
+            stroke-width="5"
+            stroke-dasharray="100 0"
+            stroke-dashoffset="0"
+          ></circle>
+        </svg>
+      </div>
+      <button id="rateus-button">RATE US</button>
+
       <div class="content" id="box-domanda">
         <h1 id="question">
           What is the most preferred image format used for logos in the
@@ -82,3 +118,7 @@
     <script src="./questions.js"></script>
   </body>
 </html>
+
+<!-- <div id="chart-container">
+          <canvas id="myDoughnutChart"></canvas>
+        </div> -->
