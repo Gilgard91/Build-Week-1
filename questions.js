@@ -116,10 +116,10 @@ const createQuestion = function (questionObj) {
   const circleTimer = document.getElementById("circle");
   const newCircle = circleTimer.cloneNode(true);
   circleTimer.parentNode.replaceChild(newCircle, circleTimer);
-  let containerDomanda = document.createElement("div");
-  containerDomanda.innerHTML = `<h1 id='question'>${questionObj.question}</h1>`; //cambio l'innertext del container con la stringa relativa alla domanda
-  let containerRisposte = document.createElement("div");
-  containerRisposte.setAttribute("id", "buttons");
+  let questionContainer = document.createElement("div");
+  questionContainer.innerHTML = `<h1 id='question'>${questionObj.question}</h1>`; //cambio l'innertext del container con la stringa relativa alla domanda
+  let answersContainer = document.createElement("div");
+  answersContainer.setAttribute("id", "buttons");
 
   for (let i = 0; i < shuffledAnswers.length; i++) {
     //faccio un for per leggere tutti gli elementi dall'array delle risposte
@@ -134,7 +134,7 @@ const createQuestion = function (questionObj) {
       unselectPreviousButton();
       e.currentTarget.classList.add("selected"); //assegno lo stile al bottone selezionato
     };
-    AnswersContainer.appendChild(answerBtn); //appendo il bottone al container delle risposte
+    answersContainer.appendChild(answerBtn); //appendo il bottone al container delle risposte
   }
 
   let timer = 30;
@@ -162,7 +162,7 @@ const createQuestion = function (questionObj) {
   }, 1000);
 
   mainContent.appendChild(questionContainer);
-  mainContent.appendChild(AnswersContainer);
+  mainContent.appendChild(answersContainer);
 
   const submitBtn = document.getElementById("next-question-button");
   submitBtn.type = "button";

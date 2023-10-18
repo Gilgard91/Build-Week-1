@@ -244,7 +244,7 @@ svg {
 #circle {
   stroke-dasharray: 377px;
   stroke-dashoffset: 0px;
-  stroke-linecap: square;
+  stroke-linecap: round;
   stroke-width: 15px;
   stroke: #00ffff;
   fill: none;
@@ -278,9 +278,6 @@ svg {
     right: 0;
 }
 
-#chart-container-outer{
-  
-}
 
 #results-div{
   width: fit-content;
