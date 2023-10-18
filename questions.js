@@ -107,14 +107,17 @@ const creaDomanda = function (questionObj) {
   answers.push(questionObj.correct_answer);
   const shuffledAnswers = shuffleArray(answers);
   let mainContent = document.getElementById("box-domanda");
+  document.getElementById("results-div").style.display = "none"
+  document.getElementById("correct-div").style.display = "none"
+  document.getElementById("wrong-div").style.display = "none"
+  document.getElementById("rateus-button").style.display = "none"
   mainContent.innerHTML = ""; //pulisco il container delle domande
   clearInterval(timerInterval); //se c'è un setInterval attivo, la funziona clearInterval lo stoppa
   const circleTimer = document.getElementById("circle");
   const newCircle = circleTimer.cloneNode(true);
   circleTimer.parentNode.replaceChild(newCircle, circleTimer);
-  let containerDomanda = document.createElement("h1");
-  containerDomanda.setAttribute("id", "question");
-  containerDomanda.innerText = questionObj.question; //cambio l'innertext del container con la stringa relativa alla domanda
+  let containerDomanda = document.createElement("div");
+  containerDomanda.innerHTML = `<h1 id='question'>${questionObj.question}</h1>`; //cambio l'innertext del container con la stringa relativa alla domanda
   let containerRisposte = document.createElement("div");
   containerRisposte.setAttribute("id", "buttons");
 
@@ -176,7 +179,7 @@ const start = function () {
   } else {
     creaDomanda(questions[i]); //chiamo il metodo creaDomanda passandogli la domanda
     i++;
-    const questionNumber = document.getElementById("counter");
+    const questionNumber = document.querySelector(".counter");
     questionNumber.innerText = i;
   }
 };
@@ -190,7 +193,7 @@ const unselectPreviousButton = function () {
 
 const shuffleArray = function (array) {
   //creo una funzione shuffle per randomizzare la disposizione delle risposte
-  if (array.type === "multiple") {
+  if (array.length > 2) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
@@ -211,14 +214,24 @@ const generaRisultato = function () {
   mainContent.remove();
   mainContent.removeAttribute("min-height");
   let timerContainer = document.getElementById("countdown");
-  timerContainer.remove()
+  timerContainer.remove();
   let footerContent = document.getElementsByTagName("footer")[0];
   footerContent.remove();
   let nav = document.getElementById("questions-nav");
   nav.style.marginBottom = "0";
   document.getElementById("chart-container").style.display = "block";
-
-
+  let rightAnswers = document.getElementById("right-answers");
+  rightAnswers.innerText = result + "/10 questions";
+  let wrongAnswers = document.getElementById("wrong-answers");
+  wrongAnswers.innerText = 10 - result + "/10 questions";
+  let rightPercent = document.getElementById("correct-percent");
+  rightPercent.innerText = result * 10 + "%";
+  let wrongPercent = document.getElementById("wrong-percent");
+  wrongPercent.innerText = (10 - result) * 10 + "%";
+  document.getElementById("results-div").style.display = "block"
+  document.getElementById("correct-div").style.display = "block"
+  document.getElementById("wrong-div").style.display = "block"
+  document.getElementById("rateus-button").style.display = "block"
   let ctx = document.getElementById("myDoughnutChart").getContext("2d");
 
   let data = {
@@ -233,6 +246,6 @@ const generaRisultato = function () {
   let myDoughnutChart = new Chart(ctx, {
     type: "doughnut",
     data: data,
-    options: { cutout: "70%", borderWidth: 0}
+    options: { cutout: "70%", borderWidth: 0 }
   });
 };

@@ -37,10 +37,26 @@
         </div>
       </nav>
       <div id="chart-container-outer">
-      <div id="chart-container">
-        <canvas id="myDoughnutChart"></canvas>
+        <div id="results-div">
+          <h2 id="results-h2">Results</h2>
+          <p id="results-p">The summary of your answers:</p>
+        </div>
+        <div id="correct-div">
+          <h2 id="correct-h2">Correct</h2>
+          <span id="correct-percent"></span><br /><span
+            id="right-answers"
+          ></span>
+        </div>
+        <div id="wrong-div">
+          <h2 id="wrong-h2">Wrong</h2>
+          <span id="wrong-percent"></span><br />
+          <span id="wrong-answers"></span>
+        </div>
+        <div id="chart-container">
+          <canvas id="myDoughnutChart"></canvas>
+        </div>
+        <button id="rateus-button">RATE US</button>
       </div>
-    </div>
       <div class="content" id="box-domanda">
         <h1 id="question">
           What is the most preferred image format used for logos in the
@@ -55,14 +71,12 @@
       </div>
       <footer>
         <h3 id="question-number">
-          QUESTION <span id="counter">1</span
+          QUESTION <span class="counter">1</span
           ><span id="question-span"> / 10</span>
         </h3>
         <button type="button" id="next-question-button">NEXT →</button>
       </footer>
     </div>
-
-    
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./questions.js"></script>
