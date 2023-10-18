@@ -1,4 +1,4 @@
-.feedbackStars {
+/* .feedbackStars {
   font-size: 4rem;
   color: #0b113b;
   display: inline-block;
@@ -6,4 +6,17 @@
 
 .feedbackStarsRating {
   color: #00ffff;
+} */
+
+.starBeforeClick {
+  filter: brightness(15%);
+}
+
+.starAfterClick {
+  filter: brightness(100%);
+}
+
+.starBeforeClick:hover {
+  filter: brightness(100%);
+  cursor: pointer;
 }
