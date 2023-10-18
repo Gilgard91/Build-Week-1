@@ -291,7 +291,7 @@ h3 {
 }
 
 #results-h2 {
-  color: rgb(193, 193, 193);
+  color: rgb(225, 225, 225);
   font-size: 60px;
   margin: 0;
   line-height: 65px;
@@ -299,7 +299,7 @@ h3 {
 
 #results-p {
   font-family: "Outfit", sans-serif;
-  color: rgb(193, 193, 193);
+  color: rgb(225, 225, 225);
   font-size: 32px;
 }
 
@@ -335,10 +335,11 @@ h3 {
   position: absolute;
   top: 408px;
   right: 9px;
+  
 }
 
 #wrong-h2 {
-  color: white;
+  color: rgb(193, 193, 193);
   margin: 0;
   font-weight: 400;
   font-size: 60px;
@@ -346,14 +347,14 @@ h3 {
 }
 
 #wrong-percent {
-  color: white;
+  color: rgb(193, 193, 193);
   font-family: "Outfit", sans-serif;
   font-size: 60px;
   font-weight: 700;
 }
 
 #wrong-answers {
-  color: white;
+  color: rgb(193, 193, 193);
   font-family: "Outfit", sans-serif;
   font-size: 25px;
   font-weight: 300;

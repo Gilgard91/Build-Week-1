@@ -250,13 +250,13 @@ const generateResult = function () {
 
   const container = document.getElementById("container");
 
-  const segment = document.getElementsByClassName("segment")[0];
+  const segment = document.getElementsByClassName("ring")[0];
 
   let totalPoints = questions.length;
 
-  let varPercent1 = (result / totalPoints) * 100;
+  let varPercent2 = (result / totalPoints) * 100;
 
-  let varPercent2 = ((totalPoints - result) / totalPoints) * 100;
+  let varPercent1 = ((totalPoints - result) / totalPoints) * 100;
 
   console.log(segment);
   segment.setAttribute("stroke-dasharray", `${varPercent1} ${varPercent2}`);
