@@ -17,14 +17,15 @@ const createStars = function () {
     star.appendChild(path);
     starsContainer.appendChild(star);
   }
+  const starsRatingReverse = starsRating.reverse();
 
-  for (let s = 0; s < starsRating.length; s++) {
-    starsRating[s].addEventListener("click", function () {
+  for (let s = 0; s < starsRatingReverse.length; s++) {
+    starsRatingReverse[s].addEventListener("click", function () {
       for (let v = 0; v <= s; v++) {
-        starsRating[v].classList.add("starAfterClick");
+        starsRatingReverse[v].classList.add("starAfterClick");
       }
-      for (let w = s + 1; w < starsRating.length; w++) {
-        starsRating[w].classList.remove("starAfterClick");
+      for (let w = s + 1; w < starsRatingReverse.length; w++) {
+        starsRatingReverse[w].classList.remove("starAfterClick");
       }
     });
   }
