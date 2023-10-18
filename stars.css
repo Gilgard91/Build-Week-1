@@ -1,3 +1,18 @@
+/* .feedbackStars {
+  font-size: 4rem;
+  color: #0b113b;
+  display: inline-block;
+}
+
+.feedbackStarsRating {
+  color: #00ffff;
+} */
+/* 
+#rating-page
+
+
+
+
 .starBeforeClick {
   filter: brightness(15%);
 }
@@ -20,4 +35,4 @@
 #stars-container > svg:hover ~ svg {
   filter: brightness(75%);
   transition: 300ms;
-}
+} */
