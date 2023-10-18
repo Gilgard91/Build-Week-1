@@ -121,7 +121,7 @@ label > .checkmark:after {
   color: #093357;
   box-shadow: 0px 0px 20px 8px #00ffff75;
   cursor: pointer;
-  transition: background-color 1.2s;
+  transition: background-color 0.5s;
 }
 
 #timer {
@@ -195,7 +195,7 @@ h3 {
   cursor: pointer;
   background-color: #ffffff00;
   box-shadow: inset 0px 0px 0 1.5px;
-  color: white;
+  color: rgb(240, 240, 240);
   font-family: "Outfit", sans-serif;
   font-size: 25px;
   padding: 15px 60px;
@@ -223,7 +223,7 @@ h3 {
   font-family: "Outfit", sans-serif;
   font-size: 50px;
   position: absolute;
-  color: white;
+  color: rgb(240, 240, 240);
   line-height: 40px;
   top: 6rem;
   right: 6rem;
@@ -291,7 +291,7 @@ h3 {
 }
 
 #results-h2 {
-  color: rgb(225, 225, 225);
+  color: rgb(240, 240, 240);
   font-size: 60px;
   margin: 0;
   line-height: 65px;
@@ -299,7 +299,7 @@ h3 {
 
 #results-p {
   font-family: "Outfit", sans-serif;
-  color: rgb(225, 225, 225);
+  color: rgb(240, 240, 240);
   font-size: 32px;
 }
 
@@ -311,7 +311,7 @@ h3 {
 }
 
 #correct-h2 {
-  color: white;
+  color: rgb(240, 240, 240);
   margin: 0;
   font-weight: 400;
   font-size: 60px;
@@ -319,12 +319,14 @@ h3 {
 }
 
 #correct-percent {
+  color: rgb(240, 240, 240);
   font-family: "Outfit", sans-serif;
   font-size: 60px;
   font-weight: 700;
 }
 
 #right-answers {
+  color: rgb(240, 240, 240);
   font-family: "Outfit", sans-serif;
   font-size: 25px;
   font-weight: 300;
@@ -339,7 +341,7 @@ h3 {
 }
 
 #wrong-h2 {
-  color: rgb(193, 193, 193);
+  color: rgb(240, 240, 240);
   margin: 0;
   font-weight: 400;
   font-size: 60px;
@@ -347,14 +349,14 @@ h3 {
 }
 
 #wrong-percent {
-  color: rgb(193, 193, 193);
+  color: rgb(240, 240, 240);
   font-family: "Outfit", sans-serif;
   font-size: 60px;
   font-weight: 700;
 }
 
 #wrong-answers {
-  color: rgb(193, 193, 193);
+  color: rgb(240, 240, 240);
   font-family: "Outfit", sans-serif;
   font-size: 25px;
   font-weight: 300;
@@ -365,7 +367,7 @@ h3 {
   cursor: pointer;
   background-color: #ffffff00;
   box-shadow: inset 0px 0px 0 1.5px;
-  color: white;
+  color: rgb(240, 240, 240);
   font-family: "Outfit", sans-serif;
   font-size: 25px;
   padding: 15px 71px;
@@ -413,7 +415,7 @@ h3 {
 }
 
 #ratingPage header {
-  padding: 2.3em 0 2.3em 6em;
+  padding: 2.6em 0 2.3em 15.9em;
 }
 
 #ratingPage main {
