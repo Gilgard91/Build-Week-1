@@ -8,8 +8,8 @@ const questions = [
     incorrect_answers: [
       "Central Process Unit",
       "Computer Personal Unit",
-      "Central Processor Unit"
-    ]
+      "Central Processor Unit",
+    ],
   },
   {
     category: "Science: Computers",
@@ -18,7 +18,7 @@ const questions = [
     question:
       "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     correct_answer: "Final",
-    incorrect_answers: ["Static", "Private", "Public"]
+    incorrect_answers: ["Static", "Private", "Public"],
   },
   {
     category: "Science: Computers",
@@ -26,7 +26,7 @@ const questions = [
     difficulty: "easy",
     question: "The logo for Snapchat is a Bell.",
     correct_answer: "False",
-    incorrect_answers: ["True"]
+    incorrect_answers: ["True"],
   },
   {
     category: "Science: Computers",
@@ -35,7 +35,7 @@ const questions = [
     question:
       "Pointers were not used in the original C programming language; they were added later on in C++.",
     correct_answer: "False",
-    incorrect_answers: ["True"]
+    incorrect_answers: ["True"],
   },
   {
     category: "Science: Computers",
@@ -44,7 +44,7 @@ const questions = [
     question:
       "What is the most preferred image format used for logos in the Wikimedia database?",
     correct_answer: ".svg",
-    incorrect_answers: [".png", ".jpeg", ".gif"]
+    incorrect_answers: [".png", ".jpeg", ".gif"],
   },
   {
     category: "Science: Computers",
@@ -55,8 +55,8 @@ const questions = [
     incorrect_answers: [
       "Counter Strike: Source",
       "Corrective Style Sheet",
-      "Computer Style Sheet"
-    ]
+      "Computer Style Sheet",
+    ],
   },
   {
     category: "Science: Computers",
@@ -65,7 +65,7 @@ const questions = [
     question:
       "What is the code name for the mobile operating system Android 7.0?",
     correct_answer: "Nougat",
-    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"]
+    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
   },
   {
     category: "Science: Computers",
@@ -73,7 +73,7 @@ const questions = [
     difficulty: "easy",
     question: "On Twitter, what is the character limit for a Tweet?",
     correct_answer: "140",
-    incorrect_answers: ["120", "160", "100"]
+    incorrect_answers: ["120", "160", "100"],
   },
   {
     category: "Science: Computers",
@@ -81,7 +81,7 @@ const questions = [
     difficulty: "easy",
     question: "Linux was first created as an alternative to Windows XP.",
     correct_answer: "False",
-    incorrect_answers: ["True"]
+    incorrect_answers: ["True"],
   },
   {
     category: "Science: Computers",
@@ -90,8 +90,8 @@ const questions = [
     question:
       "Which programming language shares its name with an island in Indonesia?",
     correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Jakarta"]
-  }
+    incorrect_answers: ["Python", "C", "Jakarta"],
+  },
 ];
 
 window.onload = function () {
@@ -99,10 +99,10 @@ window.onload = function () {
 };
 
 let result = 0; //variabile che aumenta di 1 ad ogni risposta corretta
-let timerInterval; //salvo la variabile per utilizzarla come parametro di clearInterval
-let rispostaSelezionata; //salvo la risposta che viene cliccata
+let timerInterval = null; //salvo la variabile per utilizzarla come parametro di clearInterval
+let selectedAnswer = null; //salvo la risposta che viene cliccata
 
-const creaDomanda = function (questionObj) {
+const createQuestion = function (questionObj) {
   const answers = questionObj.incorrect_answers; //creo array con tutte le risposte sbagliate e pusho quella giusta dentro lo stesso array per avercele tutte insieme
   answers.push(questionObj.correct_answer);
   const shuffledAnswers = shuffleArray(answers);
@@ -123,18 +123,18 @@ const creaDomanda = function (questionObj) {
 
   for (let i = 0; i < shuffledAnswers.length; i++) {
     //faccio un for per leggere tutti gli elementi dall'array delle risposte
-    let bottoneRisposta = document.createElement("button"); //per ogni possibile risposta creo un bottone
-    bottoneRisposta.classList.add("answer-button");
-    bottoneRisposta.type = "button";
-    bottoneRisposta.innerText = shuffledAnswers[i]; //assegno all'innertext del bottone la stringa corrispondente alla risposta
-    bottoneRisposta.onclick = (e) => {
+    let answerBtn = document.createElement("button"); //per ogni possibile risposta creo un bottone
+    answerBtn.classList.add("answer-button");
+    answerBtn.type = "button";
+    answerBtn.innerText = shuffledAnswers[i]; //assegno all'innertext del bottone la stringa corrispondente alla risposta
+    answerBtn.onclick = (e) => {
       //ad ognuno dei bottoni assegno una funzione onclick
-      rispostaSelezionata = shuffledAnswers[i]; //salvo la risposta data in rispostaSelezionata
-      console.log(rispostaSelezionata);
+      selectedAnswer = shuffledAnswers[i]; //salvo la risposta data in selectedAnswer
+      console.log(selectedAnswer);
       unselectPreviousButton();
       e.currentTarget.classList.add("selected"); //assegno lo stile al bottone selezionato
     };
-    containerRisposte.appendChild(bottoneRisposta); //appendo il bottone al container delle risposte
+    AnswersContainer.appendChild(answerBtn); //appendo il bottone al container delle risposte
   }
 
   let timer = 30;
@@ -157,17 +157,17 @@ const creaDomanda = function (questionObj) {
     }
     if (timer < 1) {
       //se il timer scade, manda la risposta selezionata e passa alla domanda successiva
-      submitRisposta(questionObj);
+      submitAnswer(questionObj);
     }
   }, 1000);
 
-  mainContent.appendChild(containerDomanda);
-  mainContent.appendChild(containerRisposte);
+  mainContent.appendChild(questionContainer);
+  mainContent.appendChild(AnswersContainer);
 
-  const bottoneSubmit = document.getElementById("next-question-button");
-  bottoneSubmit.type = "button";
-  bottoneSubmit.onclick = () => {
-    submitRisposta(questionObj); //passo l'oggetto al metodo submitRisposta che si occuperà di controllare che la risposta sia corretta o sbagliata
+  const submitBtn = document.getElementById("next-question-button");
+  submitBtn.type = "button";
+  submitBtn.onclick = () => {
+    submitAnswer(questionObj); //passo l'oggetto al metodo submitAnswer che si occuperà di controllare che la risposta sia corretta o sbagliata
   };
 };
 
@@ -175,9 +175,9 @@ let i = 0;
 const start = function () {
   //start() controlla che ci siano domande disponibili
   if (i > questions.length - 1) {
-    generaRisultato();
+    generateResult();
   } else {
-    creaDomanda(questions[i]); //chiamo il metodo creaDomanda passandogli la domanda
+    createQuestion(questions[i]); //chiamo il metodo createQuestion passandogli la domanda
     i++;
     const questionNumber = document.querySelector(".counter");
     questionNumber.innerText = i;
@@ -202,14 +202,14 @@ const shuffleArray = function (array) {
   return array;
 };
 
-const submitRisposta = function (question) {
-  if (question.correct_answer === rispostaSelezionata) {
+const submitAnswer = function (question) {
+  if (question.correct_answer === selectedAnswer) {
     result++;
   }
   start();
 };
 
-const generaRisultato = function () {
+const generateResult = function () {
   let mainContent = document.getElementById("box-domanda");
   mainContent.remove();
   mainContent.removeAttribute("min-height");
@@ -238,9 +238,9 @@ const generaRisultato = function () {
     datasets: [
       {
         data: [result, 10 - result],
-        backgroundColor: ["#00FFFF", "#D20094"]
-      }
-    ]
+        backgroundColor: ["#00FFFF", "#D20094"],
+      },
+    ],
   };
 
   let myDoughnutChart = new Chart(ctx, {
