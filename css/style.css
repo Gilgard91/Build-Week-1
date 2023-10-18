@@ -229,7 +229,7 @@ h3 {
   right: 6rem;
 }
 
-svg {
+#countdown svg {
   position: absolute;
   top: 3rem;
   right: -2rem;
@@ -273,8 +273,8 @@ svg {
   display: none;
   margin: 0 auto;
   position: relative;
-  top: 137px;
-  right: 31px;
+  top: 162px;
+  right: -7px;
 }
 
 #chart-container svg {
@@ -338,7 +338,7 @@ svg {
 }
 
 #wrong-h2 {
-  color: rgb(193, 193, 193);
+  color: white;
   margin: 0;
   font-weight: 400;
   font-size: 60px;
@@ -346,14 +346,14 @@ svg {
 }
 
 #wrong-percent {
-  color: rgb(193, 193, 193);
+  color: white;
   font-family: "Outfit", sans-serif;
   font-size: 60px;
   font-weight: 700;
 }
 
 #wrong-answers {
-  color: rgb(193, 193, 193);
+  color: white;
   font-family: "Outfit", sans-serif;
   font-size: 25px;
   font-weight: 300;
@@ -375,7 +375,7 @@ svg {
   top: 780px;
 }
 
-#result-text-div{
+#result-text-div {
   text-align: center;
   width: fit-content;
   position: absolute;
@@ -385,7 +385,7 @@ svg {
   width: 217px;
 }
 
-#result-text-title{
+#result-text-title {
   margin: 0;
   text-align: center;
   margin-bottom: 1.4rem;
@@ -394,14 +394,120 @@ svg {
   width: 220px;
 }
 
-#result-text-p{
+#result-text-p {
   margin: 0;
 }
 
-#result-text-span{
-  color:#00ffff;
+#result-text-span {
+  color: #00ffff;
 }
 
-#result-text-span-failed{
-  color:#d20094;
+#result-text-span-failed {
+  color: #d20094;
+}
+
+/* FEEDBACK PAGE */
+
+#ratingPage {
+  font-family: "Outfit", sans-serif;
+}
+
+#ratingPage header {
+  padding: 2.3em 0 2.3em 6em;
+}
+
+#ratingPage main {
+  width: 1000px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+#ratingPage main > div:first-child {
+  padding: 0 7em;
+}
+
+#ratingPage main > div + div {
+  padding: 0 6em;
+}
+
+#ratingPage input {
+  min-width: -webkit-fill-available;
+}
+
+#ratingPage img {
+  width: 170px;
+}
+
+#ratingPage svg {
+  padding: 0 0.5em 0 0.5em;
+  box-sizing: content-box;
+  width: 60px;
+  height: 60px;
+}
+
+#ratingPage .starBeforeClick {
+  filter: brightness(13%);
+}
+
+#ratingPage .starAfterClick {
+  filter: brightness(100%);
+}
+
+#ratingPage #stars-container {
+  direction: rtl;
+  padding-bottom: 4em;
+}
+
+#ratingPage #stars-container > svg:hover {
+  filter: brightness(75%);
+  transition: 300ms;
+  cursor: pointer;
+}
+
+#ratingPage #stars-container > svg:hover ~ svg {
+  filter: brightness(75%);
+  transition: 300ms;
+}
+
+#ratingPage h2 {
+  font-weight: 700;
+  font-size: 60px;
+  color: #e9e7ed;
+}
+
+#ratingPage h4 {
+  font-size: 30px;
+  font-weight: 300;
+  margin-top: 0;
+}
+
+#ratingPage footer {
+  padding-top: 1em;
+  text-align: center;
+}
+
+#ratingPage button {
+  font-family: "Outfit", sans-serif;
+  font-size: 25px;
+  padding: 15px 60px;
+  font-weight: 700;
+  border: 0;
+  background-color: #00ffff;
+  color: #072744;
+  box-shadow: 0px 0px 20px 8px #00ffff75;
+  cursor: pointer;
+}
+
+#ratingPage input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid #d20094;
+  padding-inline: 1.5em 0;
+  font-size: 18px;
+  height: 2em;
+  color: rgb(202, 202, 202);
+}
+
+#ratingPage input:focus {
+  outline: none;
 }
