@@ -454,6 +454,7 @@ h3 {
 
 #ratingPage .starBeforeClick {
   filter: brightness(13%);
+  transition: 300ms;
 }
 
 #ratingPage .starAfterClick {
@@ -469,6 +470,7 @@ h3 {
   filter: brightness(75%);
   transition: 300ms;
   cursor: pointer;
+  transition: 300ms;
 }
 
 #ratingPage #stars-container > svg:hover ~ svg {
