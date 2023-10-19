@@ -177,6 +177,7 @@ const start = function () {
   //start() controlla che ci siano domande disponibili
   if (i > questions.length - 1) {
     generateResult();
+    clearInterval(timerInterval);
   } else {
     createQuestion(questions[i]); //chiamo il metodo createQuestion passandogli la domanda
     i++;
