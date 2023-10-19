@@ -452,7 +452,8 @@ h3 {
 }
 
 #ratingPage main > div:first-child {
-  padding: 0 7em;
+  /* padding: 0 7em; */
+  text-align: left;
 }
 
 #ratingPage main > div + div {
@@ -555,4 +556,8 @@ h3 {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+#main-feedback{
+  padding-top: 2.5em;
 }
