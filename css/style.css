@@ -236,11 +236,12 @@ h3 {
   font-size: 9px;
   font-family: "Outfit", sans-serif;
   text-transform: uppercase;
+  margin: 0;
 }
 
 .timer-p + p {
   top: 140px;
-  right: 13px;
+  right: 12px;
 }
 
 #countdown > svg {
