@@ -1,4 +1,4 @@
-const questions = [
+let questions = [
   {
     category: "Science: Computers",
     type: "multiple",
@@ -8,8 +8,8 @@ const questions = [
     incorrect_answers: [
       "Central Process Unit",
       "Computer Personal Unit",
-      "Central Processor Unit",
-    ],
+      "Central Processor Unit"
+    ]
   },
   {
     category: "Science: Computers",
@@ -18,7 +18,7 @@ const questions = [
     question:
       "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     correct_answer: "Final",
-    incorrect_answers: ["Static", "Private", "Public"],
+    incorrect_answers: ["Static", "Private", "Public"]
   },
   {
     category: "Science: Computers",
@@ -26,7 +26,7 @@ const questions = [
     difficulty: "easy",
     question: "The logo for Snapchat is a Bell.",
     correct_answer: "False",
-    incorrect_answers: ["True"],
+    incorrect_answers: ["True"]
   },
   {
     category: "Science: Computers",
@@ -35,7 +35,7 @@ const questions = [
     question:
       "Pointers were not used in the original C programming language; they were added later on in C++.",
     correct_answer: "False",
-    incorrect_answers: ["True"],
+    incorrect_answers: ["True"]
   },
   {
     category: "Science: Computers",
@@ -44,7 +44,7 @@ const questions = [
     question:
       "What is the most preferred image format used for logos in the Wikimedia database?",
     correct_answer: ".svg",
-    incorrect_answers: [".png", ".jpeg", ".gif"],
+    incorrect_answers: [".png", ".jpeg", ".gif"]
   },
   {
     category: "Science: Computers",
@@ -55,8 +55,8 @@ const questions = [
     incorrect_answers: [
       "Counter Strike: Source",
       "Corrective Style Sheet",
-      "Computer Style Sheet",
-    ],
+      "Computer Style Sheet"
+    ]
   },
   {
     category: "Science: Computers",
@@ -65,7 +65,7 @@ const questions = [
     question:
       "What is the code name for the mobile operating system Android 7.0?",
     correct_answer: "Nougat",
-    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
+    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"]
   },
   {
     category: "Science: Computers",
@@ -73,7 +73,7 @@ const questions = [
     difficulty: "easy",
     question: "On Twitter, what is the character limit for a Tweet?",
     correct_answer: "140",
-    incorrect_answers: ["120", "160", "100"],
+    incorrect_answers: ["120", "160", "100"]
   },
   {
     category: "Science: Computers",
@@ -81,7 +81,7 @@ const questions = [
     difficulty: "easy",
     question: "Linux was first created as an alternative to Windows XP.",
     correct_answer: "False",
-    incorrect_answers: ["True"],
+    incorrect_answers: ["True"]
   },
   {
     category: "Science: Computers",
@@ -90,12 +90,54 @@ const questions = [
     question:
       "Which programming language shares its name with an island in Indonesia?",
     correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Jakarta"],
-  },
+    incorrect_answers: ["Python", "C", "Jakarta"]
+  }
 ];
 
-window.onload = function () {
+window.onload = async function () {
+  hideContent();
+  const difficulty = sessionStorage.getItem("difficulty");
+  const jsonDomande = await pullQuestions(difficulty);
+  if (jsonDomande.response_code == 0) {
+    questions = jsonDomande.results;
+  }
   start();
+};
+
+const pullQuestions = async function (difficulty) {
+  const fetchDomande = await fetch(
+    "https://opentdb.com/api.php?amount=10&category=18&difficulty=" + difficulty
+  );
+  const jsonDomande = await fetchDomande.json();
+  return jsonDomande;
+};
+
+const formatText = function (text) {
+  console.log(text);
+  const rules = [
+    { expression: /&quot;/g, replacement: '"' },
+    { expression: /&#039;/g, replacement: "'" },
+    { expression: /&lt;/g, replacement: "<" },
+    { expression: /&gt;/g, replacement: ">" },
+    { expression: /&amp;/g, replacement: "&" }
+  ];
+
+  let result;
+  rules.forEach((rule) => {
+    result = text.replaceAll(rule.expression, rule.replacement);
+  });
+  console.log(result);
+  return result;
+};
+
+const hideContent = function () {
+  document.getElementById("results-div").style.display = "none";
+  document.getElementById("correct-div").style.display = "none";
+  document.getElementById("wrong-div").style.display = "none";
+  document.getElementById("rateus-button").style.display = "none";
+  document.getElementById("result-text-div").style.display = "none";
+  let mainContent = document.getElementById("box-domanda");
+  mainContent.innerHTML = "";
 };
 
 let result = 0; //variabile che aumenta di 1 ad ogni risposta corretta
@@ -107,34 +149,25 @@ const createQuestion = function (questionObj) {
   answers.push(questionObj.correct_answer);
   const shuffledAnswers = shuffleArray(answers);
   let mainContent = document.getElementById("box-domanda");
-  document.getElementById("results-div").style.display = "none";
-  document.getElementById("correct-div").style.display = "none";
-  document.getElementById("wrong-div").style.display = "none";
-  document.getElementById("rateus-button").style.display = "none";
-  document.getElementById("result-text-div").style.display = "none";
+  // const loader = document.querySelector(".loader");
+  // document.getElementById("loader").classList.remove("loader");
   mainContent.innerHTML = ""; //pulisco il container delle domande
   clearInterval(timerInterval); //se c'è un setInterval attivo, la funziona clearInterval lo stoppa
   const circleTimer = document.getElementById("circle");
   const newCircle = circleTimer.cloneNode(true);
   circleTimer.parentNode.replaceChild(newCircle, circleTimer);
   let questionContainer = document.createElement("div");
-  questionContainer.innerHTML = `<h1 id='question'>${questionObj.question}</h1>`; //cambio l'innertext del container con la stringa relativa alla domanda
+  questionContainer.innerHTML = `<h1 id='question'>${formatText(
+    questionObj.question
+  )}</h1>`; //cambio l'innertext del container con la stringa relativa alla domanda
   let answersContainer = document.createElement("div");
   answersContainer.setAttribute("id", "buttons");
 
+  // shuffledAnswers.forEach(answer => answersContainer.appendChild(generateAnswerBtn(answer)));
+
   for (let i = 0; i < shuffledAnswers.length; i++) {
     //faccio un for per leggere tutti gli elementi dall'array delle risposte
-    let answerBtn = document.createElement("button"); //per ogni possibile risposta creo un bottone
-    answerBtn.classList.add("answer-button");
-    answerBtn.type = "button";
-    answerBtn.innerText = shuffledAnswers[i]; //assegno all'innertext del bottone la stringa corrispondente alla risposta
-    answerBtn.onclick = (e) => {
-      //ad ognuno dei bottoni assegno una funzione onclick
-      selectedAnswer = shuffledAnswers[i]; //salvo la risposta data in selectedAnswer
-      console.log(selectedAnswer);
-      unselectPreviousButton();
-      e.currentTarget.classList.add("selected"); //assegno lo stile al bottone selezionato
-    };
+    let answerBtn = generateAnswerBtn(shuffledAnswers[i]);
     answersContainer.appendChild(answerBtn); //appendo il bottone al container delle risposte
   }
 
@@ -172,8 +205,24 @@ const createQuestion = function (questionObj) {
   };
 };
 
+const generateAnswerBtn = function (shuffledAnswer) {
+  let answerBtn = document.createElement("button"); //per ogni possibile risposta creo un bottone
+  answerBtn.classList.add("answer-button");
+  answerBtn.type = "button";
+  answerBtn.innerHTML = `${formatText(shuffledAnswer)}`; //assegno all'innertext del bottone la stringa corrispondente alla risposta
+  answerBtn.onclick = (e) => {
+    //ad ognuno dei bottoni assegno una funzione onclick
+    selectedAnswer = shuffledAnswer; //salvo la risposta data in selectedAnswer
+    console.log(selectedAnswer);
+    unselectPreviousButton();
+    e.currentTarget.classList.add("selected"); //assegno lo stile al bottone selezionato
+  };
+  return answerBtn;
+};
+
 let i = 0;
 const start = function () {
+  // console.log(jsonDomande);
   //start() controlla che ci siano domande disponibili
   if (i > questions.length - 1) {
     generateResult();
