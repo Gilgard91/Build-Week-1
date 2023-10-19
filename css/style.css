@@ -60,6 +60,10 @@ li {
   margin: 0.5em;
 }
 
+form {
+  user-select: none;
+}
+
 label {
   font-family: "Outfit", sans-serif;
   margin-right: 15em;
@@ -101,10 +105,10 @@ label > input:checked + .checkmark:after {
 }
 
 label > .checkmark:after {
-  left: 3px;
-  top: -1px;
-  width: 7px;
-  height: 11px;
+  left: 4px;
+  top: -2px;
+  width: 6px;
+  height: 12px;
   border: 1px solid #0c113b;
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
