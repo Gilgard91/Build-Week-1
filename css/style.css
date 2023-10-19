@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -227,6 +229,22 @@ h3 {
   right: 6rem;
 }
 
+.timer-p {
+  position: absolute;
+  top: 79px;
+  right: 17px;
+  font-size: 9px;
+  font-family: "Outfit", sans-serif;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 200;
+}
+
+.timer-p + p {
+  top: 140px;
+  right: 13px;
+}
+
 #countdown > svg {
   position: absolute;
   top: 3rem;
@@ -377,8 +395,7 @@ h3 {
   padding: 15px 71px;
   font-weight: 700;
   border: 0;
-  right: 377px;
-  cursor: pointer;
+  right: 375px;
   top: 780px;
 }
 
@@ -455,6 +472,7 @@ h3 {
 
 #ratingPage .starBeforeClick {
   filter: brightness(13%);
+  transition: 300ms;
 }
 
 #ratingPage .starAfterClick {
@@ -470,6 +488,7 @@ h3 {
   filter: brightness(75%);
   transition: 300ms;
   cursor: pointer;
+  transition: 300ms;
 }
 
 #ratingPage #stars-container > svg:hover ~ svg {
