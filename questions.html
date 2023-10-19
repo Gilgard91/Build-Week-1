@@ -18,7 +18,8 @@
     />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body>
+
+  <body onload="hideContent()">
     <div id="main-content">
       <nav id="questions-nav">
         <img
@@ -27,7 +28,7 @@
           alt="logo epicode"
         />
         <div id="countdown">
-          <div id="timer" class="timer">TIMER</div>
+          <div id="timer" class="timer"></div>
           <p class="timer-p">seconds</p>
           <p class="timer-p">remaining</p>
           <svg>
@@ -36,20 +37,21 @@
           </svg>
         </div>
       </nav>
-      <div id="results-div">
+
+      <div id="results-div" style="display: none">
         <h2 id="results-h2">Results</h2>
         <p id="results-p">The summary of your answers:</p>
       </div>
-      <div id="correct-div">
+      <div id="correct-div" style="display: none">
         <h2 id="correct-h2">Correct</h2>
         <span id="correct-percent"></span><br /><span id="right-answers"></span>
       </div>
-      <div id="wrong-div">
+      <div id="wrong-div" style="display: none">
         <h2 id="wrong-h2">Wrong</h2>
         <span id="wrong-percent"></span><br />
         <span id="wrong-answers"></span>
       </div>
-      <div id="result-text-div">
+      <div id="result-text-div" style="display: none">
         <h3 id="result-text-title">
           Congratulations! <br /><span id="result-text-span"
             >You passed the exam.</span
@@ -92,18 +94,19 @@
           ></circle>
         </svg>
       </div>
-      <a href="./feedback.html"><button id="rateus-button">RATE US</button></a>
+      <a href="./feedback.html"
+        ><button id="rateus-button" style="display: none">RATE US</button></a
+      >
+
+      <!-- <div class="loader" id="loader"></div> -->
       <div class="content" id="box-domanda">
-        <h1 id="question">
-          What is the most preferred image format used for logos in the
-          Wikimedia database?
-        </h1>
-        <div id="buttons">
-          <button type="button" class="answer-button">.svg</button>
-          <button type="button" class="answer-button">.png</button>
-          <button type="button" class="answer-button">.jpeg</button>
-          <button type="button" class="answer-button">.gif</button>
-        </div>
+        <h1 id="question"></h1>
+        <!-- <div id="buttons">
+          <button type="button" class="answer-button" style="display: none;">.svg</button>
+          <button type="button" class="answer-button" style="display: none;">.png</button>
+          <button type="button" class="answer-button" style="display: none;">.jpeg</button>
+          <button type="button" class="answer-button" style="display: none;">.gif</button>
+        </div> -->
       </div>
       <footer>
         <h3 id="question-number">
