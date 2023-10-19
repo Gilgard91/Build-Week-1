@@ -148,7 +148,6 @@ const createQuestion = function (questionObj) {
     answerBtn.onclick = (e) => {
       //ad ognuno dei bottoni assegno una funzione onclick
       selectedAnswer = shuffledAnswers[i]; //salvo la risposta data in selectedAnswer
-      console.log(selectedAnswer);
       unselectPreviousButton();
       e.currentTarget.classList.add("selected"); //assegno lo stile al bottone selezionato
     };
