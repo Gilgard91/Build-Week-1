@@ -274,6 +274,8 @@ const generateResult = function () {
   segment.setAttribute("stroke-dasharray", `${varPercent1} ${varPercent2}`);
 };
 
+// FEEDBACK PAGE
+
 window.addEventListener("DOMContentLoaded", () => {
   const starsContainer = document.getElementById("stars-container");
   const starsRating = [];
