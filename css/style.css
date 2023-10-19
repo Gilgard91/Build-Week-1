@@ -561,3 +561,21 @@ h3 {
 #main-feedback{
   padding-top: 2.5em;
 }
+
+.custom-select{
+  font-family: "Outfit", sans-serif;
+  padding: 0.5em 1em 0.5em 1em;
+  margin-bottom: 5em;
+}
+
+.select-button{
+  display: block;
+}
+
+
+
+
+
+
+
+
