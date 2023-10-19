@@ -32,7 +32,7 @@ h1 {
   line-height: 65px;
 }
 
-h2 {
+.instructions h2 {
   font-family: "Outfit", sans-serif;
   font-size: 32px;
   font-weight: 700;
@@ -129,7 +129,7 @@ label > .checkmark:after {
 }
 
 img {
-  margin-right: 45em;
+  width: 170px;
 }
 
 #question {
@@ -148,8 +148,6 @@ img {
   font-size: 25px;
   letter-spacing: 0.3rem;
   min-width: 278px;
-  /* display: inline-block;
-    margin: 0 auto; */
 }
 
 #question-span {
@@ -229,7 +227,7 @@ h3 {
   right: 6rem;
 }
 
-#countdown svg {
+#countdown > svg {
   position: absolute;
   top: 3rem;
   right: -2rem;
@@ -304,6 +302,7 @@ h3 {
 }
 
 #correct-div {
+  font-family: "Outfit", sans-serif;
   width: fit-content;
   margin: 0;
   position: absolute;
@@ -333,11 +332,11 @@ h3 {
 }
 
 #wrong-div {
+  font-family: "Outfit", sans-serif;
   width: fit-content;
   position: absolute;
   top: 408px;
   right: 9px;
-  
 }
 
 #wrong-h2 {
