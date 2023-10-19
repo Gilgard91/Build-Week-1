@@ -388,6 +388,7 @@ h3 {
 }
 
 #result-text-title {
+  color: rgb(240, 240, 240);
   margin: 0;
   text-align: center;
   margin-bottom: 1.4rem;
@@ -397,6 +398,7 @@ h3 {
 }
 
 #result-text-p {
+  color: rgb(240, 240, 240);
   margin: 0;
 }
 
