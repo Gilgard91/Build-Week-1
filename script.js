@@ -27,17 +27,27 @@ document.addEventListener("DOMContentLoaded", () => {
 const selectDifficulty = function () {
   const difficulty = document.createElement("select");
   const content = document.querySelector(".content");
+  content.setAttribute("id", "difficulty-div");
   content.innerHTML = "";
   difficulty.innerHTML =
     "<option value='easy'>Easy</option> <option value='medium'>Medium</option> <option value='hard'>Hard</option>";
   difficulty.classList.add("custom-select");
+  const h1Difficulty = document.createElement("h1");
+  h1Difficulty.setAttribute("id", "h1-difficulty");
+  h1Difficulty.innerText = "Please choose the difficulty:"
+  content.appendChild(h1Difficulty);
   content.appendChild(difficulty);
   const submitButton = document.createElement("button");
   submitButton.innerText = "START";
   submitButton.setAttribute("id", "proceed");
   submitButton.classList.add("active");
   submitButton.classList.add("select-button");
-  content.appendChild(submitButton);
+  const submitButtonDiv = document.createElement("div");
+  submitButtonDiv.setAttribute("id", "difficulty-button-div");
+  submitButtonDiv.appendChild(submitButton);
+  content.appendChild(submitButtonDiv);
+  document.getElementById("main-content").classList.add("main-content-difficulty");
+  document.getElementsByTagName("nav")[0].setAttribute("id", "nav-difficulty")
 };
 
 // QUESTIONS PAGE
