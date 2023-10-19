@@ -101,10 +101,10 @@ label > input:checked + .checkmark:after {
 }
 
 label > .checkmark:after {
-  left: 4px;
-  top: 0px;
-  width: 5px;
-  height: 10px;
+  left: 3px;
+  top: -1px;
+  width: 7px;
+  height: 11px;
   border: 1px solid #0c113b;
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
@@ -150,8 +150,6 @@ img {
   font-size: 25px;
   letter-spacing: 0.3rem;
   min-width: 278px;
-  /* display: inline-block;
-    margin: 0 auto; */
 }
 
 #question-span {
@@ -284,6 +282,10 @@ h3 {
   height: 100%;
 }
 
+.segment {
+  filter: drop-shadow(0px 0px 1px black);
+}
+
 #results-div {
   width: fit-content;
   text-align: center;
@@ -293,6 +295,7 @@ h3 {
 }
 
 #results-h2 {
+  font-family: "Outfit", sans-serif;
   color: rgb(240, 240, 240);
   font-size: 60px;
   margin: 0;
@@ -376,8 +379,7 @@ h3 {
   padding: 15px 71px;
   font-weight: 700;
   border: 0;
-  right: 377px;
-  cursor: pointer;
+  right: 375px;
   top: 780px;
 }
 
@@ -391,6 +393,7 @@ h3 {
 }
 
 #result-text-title {
+  color: rgb(240, 240, 240);
   margin: 0;
   text-align: center;
   margin-bottom: 1.4rem;
@@ -400,6 +403,7 @@ h3 {
 }
 
 #result-text-p {
+  color: rgb(240, 240, 240);
   margin: 0;
 }
 
@@ -452,6 +456,7 @@ h3 {
 
 #ratingPage .starBeforeClick {
   filter: brightness(13%);
+  transition: 300ms;
 }
 
 #ratingPage .starAfterClick {
@@ -467,6 +472,7 @@ h3 {
   filter: brightness(75%);
   transition: 300ms;
   cursor: pointer;
+  transition: 300ms;
 }
 
 #ratingPage #stars-container > svg:hover ~ svg {
