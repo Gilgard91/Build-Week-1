@@ -123,7 +123,7 @@ label > .checkmark:after {
   color: #093357;
   box-shadow: 0px 0px 20px 8px #00ffff75;
   cursor: pointer;
-  transition: background-color 1.2s;
+  transition: background-color 0.5s;
 }
 
 #timer {
@@ -197,7 +197,7 @@ h3 {
   cursor: pointer;
   background-color: #ffffff00;
   box-shadow: inset 0px 0px 0 1.5px;
-  color: white;
+  color: rgb(240, 240, 240);
   font-family: "Outfit", sans-serif;
   font-size: 25px;
   padding: 15px 60px;
@@ -225,7 +225,7 @@ h3 {
   font-family: "Outfit", sans-serif;
   font-size: 50px;
   position: absolute;
-  color: white;
+  color: rgb(240, 240, 240);
   line-height: 40px;
   top: 6rem;
   right: 6rem;
@@ -275,8 +275,8 @@ h3 {
   display: none;
   margin: 0 auto;
   position: relative;
-  top: 137px;
-  right: 31px;
+  top: 162px;
+  right: -7px;
 }
 
 #chart-container svg {
@@ -293,8 +293,7 @@ h3 {
 }
 
 #results-h2 {
-  font-family: "Outfit", sans-serif;
-  color: white;
+  color: rgb(240, 240, 240);
   font-size: 60px;
   margin: 0;
   line-height: 65px;
@@ -302,7 +301,7 @@ h3 {
 
 #results-p {
   font-family: "Outfit", sans-serif;
-  color: white;
+  color: rgb(240, 240, 240);
   font-size: 32px;
 }
 
@@ -315,7 +314,7 @@ h3 {
 }
 
 #correct-h2 {
-  color: white;
+  color: rgb(240, 240, 240);
   margin: 0;
   font-weight: 400;
   font-size: 60px;
@@ -323,12 +322,14 @@ h3 {
 }
 
 #correct-percent {
+  color: rgb(240, 240, 240);
   font-family: "Outfit", sans-serif;
   font-size: 60px;
   font-weight: 700;
 }
 
 #right-answers {
+  color: rgb(240, 240, 240);
   font-family: "Outfit", sans-serif;
   font-size: 25px;
   font-weight: 300;
@@ -343,7 +344,7 @@ h3 {
 }
 
 #wrong-h2 {
-  color: white;
+  color: rgb(240, 240, 240);
   margin: 0;
   font-weight: 400;
   font-size: 60px;
@@ -351,14 +352,14 @@ h3 {
 }
 
 #wrong-percent {
-  color: white;
+  color: rgb(240, 240, 240);
   font-family: "Outfit", sans-serif;
   font-size: 60px;
   font-weight: 700;
 }
 
 #wrong-answers {
-  color: white;
+  color: rgb(240, 240, 240);
   font-family: "Outfit", sans-serif;
   font-size: 25px;
   font-weight: 300;
@@ -369,7 +370,7 @@ h3 {
   cursor: pointer;
   background-color: #ffffff00;
   box-shadow: inset 0px 0px 0 1.5px;
-  color: white;
+  color: rgb(240, 240, 240);
   font-family: "Outfit", sans-serif;
   font-size: 25px;
   padding: 15px 71px;
@@ -384,10 +385,9 @@ h3 {
   text-align: center;
   width: fit-content;
   position: absolute;
-  top: 403px;
-  right: 387px;
+  top: 387px;
+  right: 383px;
   font-family: "Outfit", sans-serif;
-  width: 217px;
 }
 
 #result-text-title {
@@ -411,48 +411,108 @@ h3 {
   color: #d20094;
 }
 
-/* feedback page */
-.starBeforeClick {
-  filter: brightness(15%);
+/* FEEDBACK PAGE */
+
+#ratingPage {
+  font-family: "Outfit", sans-serif;
 }
 
-.starAfterClick {
+#ratingPage header {
+  padding: 2.6em 0 2.3em 15.9em;
+}
+
+#ratingPage main {
+  width: 1000px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+#ratingPage main > div:first-child {
+  padding: 0 7em;
+}
+
+#ratingPage main > div + div {
+  padding: 0 6em;
+}
+
+#ratingPage input {
+  min-width: -webkit-fill-available;
+}
+
+#ratingPage img {
+  width: 170px;
+}
+
+#ratingPage svg {
+  padding: 0 0.5em 0 0.5em;
+  box-sizing: content-box;
+  width: 60px;
+  height: 60px;
+}
+
+#ratingPage .starBeforeClick {
+  filter: brightness(13%);
+}
+
+#ratingPage .starAfterClick {
   filter: brightness(100%);
 }
 
-#stars-container {
+#ratingPage #stars-container {
   direction: rtl;
+  padding-bottom: 4em;
 }
 
-#stars-container > svg:hover {
+#ratingPage #stars-container > svg:hover {
   filter: brightness(75%);
   transition: 300ms;
   cursor: pointer;
 }
 
-#stars-container > svg:hover ~ svg {
+#ratingPage #stars-container > svg:hover ~ svg {
   filter: brightness(75%);
   transition: 300ms;
 }
 
-#main-feedback {
-  width: 1000px;
-  margin-inline: auto;
-  padding-top: 2.5em;
-  font-family: "Outfit", sans-serif;
+#ratingPage h2 {
+  font-weight: 700;
+  font-size: 60px;
+  color: #e9e7ed;
+}
+
+#ratingPage h4 {
+  font-size: 30px;
+  font-weight: 300;
+  margin-top: 0;
+}
+
+#ratingPage footer {
+  padding-top: 1em;
   text-align: center;
 }
 
-#main-feedback div:first-child {
-  text-align: left;
-}
-#main-feedback h2 {
-  font-size: 60px;
+#ratingPage button {
+  font-family: "Outfit", sans-serif;
+  font-size: 25px;
+  padding: 15px 60px;
   font-weight: 700;
-}
-#main-feedback h4 {
+  border: 0;
+  background-color: #00ffff;
+  color: #072744;
+  box-shadow: 0px 0px 20px 8px #00ffff75;
+  cursor: pointer;
 }
 
-#text-area-container {
-  margin-top: 4em;
+#ratingPage input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid #d20094;
+  padding-inline: 1.5em 0;
+  font-size: 18px;
+  height: 2em;
+  color: rgb(202, 202, 202);
+}
+
+#ratingPage input:focus {
+  outline: none;
 }

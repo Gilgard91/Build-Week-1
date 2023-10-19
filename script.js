@@ -1,4 +1,5 @@
 window.onload = () => {
+  
   const checkbox = document.getElementById("agree");
   const submitButton = document.getElementById("proceed");
   checkbox.addEventListener("change", function () {
@@ -10,4 +11,6 @@ window.onload = () => {
       submitButton.classList.remove("active");
     }
   });
+
+ 
 };
