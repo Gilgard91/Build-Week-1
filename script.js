@@ -358,11 +358,8 @@ const generateResult = function () {
   let totalPoints = questions.length;
   let correctPercent = (result / totalPoints) * 100;
   let incorrectPercent = ((totalPoints - result) / totalPoints) * 100;
-  // segment.setAttribute("stroke-dasharray", `${varPercent1} ${varPercent2}`);
-  let correctColor = "#00FFFF";
-  let incorrectColor = "#D20094";
+
   let correctSegment = document.querySelector(".segment");
-  let incorrectSegment = document.querySelector(".ring");
 
   function animateColors() {
     setTimeout(function () {
