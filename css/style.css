@@ -7,7 +7,6 @@
 body {
   background-image: url(../assets/bg.jpg);
   background-size: cover;
-  color: white;
   margin: 0;
 }
 
@@ -63,6 +62,7 @@ ul {
   padding: 0;
   margin-left: 1.3em;
   margin-bottom: 5em;
+  color: rgb(240, 240, 240);
 }
 
 li {
