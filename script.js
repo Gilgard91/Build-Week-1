@@ -1,3 +1,4 @@
+// Welcome Page
 document.addEventListener("DOMContentLoaded", () => {
   const checkbox = document.getElementById("agree");
   const submitButton = document.getElementById("proceed");
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Difficulty selection page
   submitButton.onclick = function () {
     selectDifficulty();
     const selectButton = document.querySelector(".select-button");
@@ -285,6 +287,7 @@ const start = function () {
   }
 };
 
+// Rendo la selezione della risposta univoca
 const unselectPreviousButton = function () {
   const previouslySelectedAnswer = document.querySelector(".selected");
   if (previouslySelectedAnswer) {
@@ -303,6 +306,7 @@ const shuffleArray = function (array) {
   return array;
 };
 
+// Incremento il punteggio complessivo delle risposte corrette
 const submitAnswer = function (question) {
   if (question.correct_answer === selectedAnswer) {
     result++;
@@ -310,6 +314,7 @@ const submitAnswer = function (question) {
   start();
 };
 
+// Generazione della pagina dei risultati
 const generateResult = function () {
   let mainContent = document.getElementById("box-domanda");
   mainContent.remove();
@@ -349,7 +354,7 @@ const generateResult = function () {
       </p>`;
   }
 
-  const segment = document.getElementsByClassName("ring")[0]; //Qui la svg viene modellata in base al risultato
+  //Qui la svg viene modellata ed animata in base al risultato
   let totalPoints = questions.length;
   let correctPercent = (result / totalPoints) * 100;
   let incorrectPercent = ((totalPoints - result) / totalPoints) * 100;
@@ -363,6 +368,8 @@ const generateResult = function () {
   }
   animateColors();
 };
+
+// Feedback page
 const starsContainer = document.getElementById("stars-container");
 const starsRating = [];
 const createStars = function () {
