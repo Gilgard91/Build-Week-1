@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const checkbox = document.getElementById("agree");
   const submitButton = document.getElementById("proceed");
-  console.log(checkbox);
   checkbox.addEventListener("change", function () {
     if (checkbox.checked) {
       submitButton.removeAttribute("disabled");
@@ -168,7 +167,6 @@ const pullQuestions = async function (difficulty) {
 };
 
 const formatText = function (text) {
-  console.log(text);
   const rules = [
     { expression: /&quot;/g, replacement: '"' },
     { expression: /&#039;/g, replacement: "'" },
@@ -181,7 +179,6 @@ const formatText = function (text) {
   rules.forEach((rule) => {
     result = text.replaceAll(rule.expression, rule.replacement);
   });
-  console.log(result);
   return result;
 };
 
@@ -268,7 +265,6 @@ const generateAnswerBtn = function (shuffledAnswer) {
   answerBtn.onclick = (e) => {
     //ad ognuno dei bottoni assegno una funzione onclick
     selectedAnswer = shuffledAnswer; //salvo la risposta data in selectedAnswer
-    console.log(selectedAnswer);
     unselectPreviousButton();
     e.currentTarget.classList.add("selected"); //assegno lo stile al bottone selezionato
   };
@@ -277,7 +273,6 @@ const generateAnswerBtn = function (shuffledAnswer) {
 
 let i = 0;
 const start = function () {
-  // console.log(jsonDomande);
   //start() controlla che ci siano domande disponibili
   if (i > questions.length - 1) {
     generateResult();
@@ -402,7 +397,6 @@ const createStars = function () {
       for (let w = s + 1; w < starsRatingReverse.length; w++) {
         starsRatingReverse[w].classList.remove("starAfterClick");
       }
-      console.log(rating);
       if (rating.length > 5 || rating.length === 10) {
         feedbackP.innerText =
           "Thank you for your feedback! Please tell us what you liked!";
