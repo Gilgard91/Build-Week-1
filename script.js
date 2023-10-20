@@ -52,8 +52,8 @@ let questions = [
     incorrect_answers: [
       "Central Process Unit",
       "Computer Personal Unit",
-      "Central Processor Unit"
-    ]
+      "Central Processor Unit",
+    ],
   },
   {
     category: "Science: Computers",
@@ -62,7 +62,7 @@ let questions = [
     question:
       "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     correct_answer: "Final",
-    incorrect_answers: ["Static", "Private", "Public"]
+    incorrect_answers: ["Static", "Private", "Public"],
   },
   {
     category: "Science: Computers",
@@ -70,7 +70,7 @@ let questions = [
     difficulty: "easy",
     question: "The logo for Snapchat is a Bell.",
     correct_answer: "False",
-    incorrect_answers: ["True"]
+    incorrect_answers: ["True"],
   },
   {
     category: "Science: Computers",
@@ -79,7 +79,7 @@ let questions = [
     question:
       "Pointers were not used in the original C programming language; they were added later on in C++.",
     correct_answer: "False",
-    incorrect_answers: ["True"]
+    incorrect_answers: ["True"],
   },
   {
     category: "Science: Computers",
@@ -88,7 +88,7 @@ let questions = [
     question:
       "What is the most preferred image format used for logos in the Wikimedia database?",
     correct_answer: ".svg",
-    incorrect_answers: [".png", ".jpeg", ".gif"]
+    incorrect_answers: [".png", ".jpeg", ".gif"],
   },
   {
     category: "Science: Computers",
@@ -99,8 +99,8 @@ let questions = [
     incorrect_answers: [
       "Counter Strike: Source",
       "Corrective Style Sheet",
-      "Computer Style Sheet"
-    ]
+      "Computer Style Sheet",
+    ],
   },
   {
     category: "Science: Computers",
@@ -109,7 +109,7 @@ let questions = [
     question:
       "What is the code name for the mobile operating system Android 7.0?",
     correct_answer: "Nougat",
-    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"]
+    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
   },
   {
     category: "Science: Computers",
@@ -117,7 +117,7 @@ let questions = [
     difficulty: "easy",
     question: "On Twitter, what is the character limit for a Tweet?",
     correct_answer: "140",
-    incorrect_answers: ["120", "160", "100"]
+    incorrect_answers: ["120", "160", "100"],
   },
   {
     category: "Science: Computers",
@@ -125,7 +125,7 @@ let questions = [
     difficulty: "easy",
     question: "Linux was first created as an alternative to Windows XP.",
     correct_answer: "False",
-    incorrect_answers: ["True"]
+    incorrect_answers: ["True"],
   },
   {
     category: "Science: Computers",
@@ -134,8 +134,8 @@ let questions = [
     question:
       "Which programming language shares its name with an island in Indonesia?",
     correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Jakarta"]
-  }
+    incorrect_answers: ["Python", "C", "Jakarta"],
+  },
 ];
 
 window.onload = async function () {
@@ -163,7 +163,7 @@ const formatText = function (text) {
     { expression: /&#039;/g, replacement: "'" },
     { expression: /&lt;/g, replacement: "<" },
     { expression: /&gt;/g, replacement: ">" },
-    { expression: /&amp;/g, replacement: "&" }
+    { expression: /&amp;/g, replacement: "&" },
   ];
 
   let result;
@@ -270,6 +270,7 @@ const start = function () {
   //start() controlla che ci siano domande disponibili
   if (i > questions.length - 1) {
     generateResult();
+    clearInterval(timerInterval);
   } else {
     createQuestion(questions[i]); //chiamo il metodo createQuestion passandogli la domanda
     i++;
@@ -348,39 +349,36 @@ const generateResult = function () {
   let varPercent1 = ((totalPoints - result) / totalPoints) * 100;
   segment.setAttribute("stroke-dasharray", `${varPercent1} ${varPercent2}`);
 };
-  const starsContainer = document.getElementById("stars-container");
-  const starsRating = [];
-  const createStars = function () {
-    for (let r = 0; r < 10; r++) {
-      const star = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      star.setAttribute("width", "47");
-      star.setAttribute("height", "46");
-      star.setAttribute("viewBox", "0 0 47 46");
-      star.classList.add("starBeforeClick");
-      starsRating.push(star);
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      path.setAttribute(
-        "d",
-        "M22.2044 1.55551C22.6143 0.569963 24.0104 0.569964 24.4203 1.55552L29.9874 14.9402C30.1602 15.3557 30.5509 15.6396 30.9994 15.6756L45.4494 16.834C46.5134 16.9193 46.9448 18.2471 46.1341 18.9415L35.1248 28.3722C34.7831 28.6649 34.6338 29.1242 34.7382 29.5619L38.1018 43.6626C38.3494 44.7009 37.2199 45.5215 36.309 44.9651L23.9379 37.4089C23.5538 37.1743 23.0709 37.1743 22.6868 37.4089L10.3157 44.9651C9.40478 45.5215 8.27528 44.7009 8.52295 43.6626L11.8865 29.5619C11.9909 29.1242 11.8416 28.6649 11.4999 28.3722L0.490575 18.9415C-0.320069 18.2471 0.111362 16.9193 1.17535 16.834L15.6253 15.6756C16.0738 15.6396 16.4645 15.3557 16.6374 14.9402L22.2044 1.55551Z"
-      );
-      path.setAttribute("fill", "#00FFFF");
-      star.appendChild(path);
-      starsContainer.appendChild(star);
-    }
-    const starsRatingReverse = starsRating.reverse();
-  
-    for (let s = 0; s < starsRatingReverse.length; s++) {
-      starsRatingReverse[s].addEventListener("click", function () {
-        for (let v = 0; v <= s; v++) {
-          starsRatingReverse[v].classList.add("starAfterClick");
-        }
-        for (let w = s + 1; w < starsRatingReverse.length; w++) {
-          starsRatingReverse[w].classList.remove("starAfterClick");
-        }
-      });
-    }
-  };
-  createStars();
-  
+const starsContainer = document.getElementById("stars-container");
+const starsRating = [];
+const createStars = function () {
+  for (let r = 0; r < 10; r++) {
+    const star = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    star.setAttribute("width", "47");
+    star.setAttribute("height", "46");
+    star.setAttribute("viewBox", "0 0 47 46");
+    star.classList.add("starBeforeClick");
+    starsRating.push(star);
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute(
+      "d",
+      "M22.2044 1.55551C22.6143 0.569963 24.0104 0.569964 24.4203 1.55552L29.9874 14.9402C30.1602 15.3557 30.5509 15.6396 30.9994 15.6756L45.4494 16.834C46.5134 16.9193 46.9448 18.2471 46.1341 18.9415L35.1248 28.3722C34.7831 28.6649 34.6338 29.1242 34.7382 29.5619L38.1018 43.6626C38.3494 44.7009 37.2199 45.5215 36.309 44.9651L23.9379 37.4089C23.5538 37.1743 23.0709 37.1743 22.6868 37.4089L10.3157 44.9651C9.40478 45.5215 8.27528 44.7009 8.52295 43.6626L11.8865 29.5619C11.9909 29.1242 11.8416 28.6649 11.4999 28.3722L0.490575 18.9415C-0.320069 18.2471 0.111362 16.9193 1.17535 16.834L15.6253 15.6756C16.0738 15.6396 16.4645 15.3557 16.6374 14.9402L22.2044 1.55551Z"
+    );
+    path.setAttribute("fill", "#00FFFF");
+    star.appendChild(path);
+    starsContainer.appendChild(star);
+  }
+  const starsRatingReverse = starsRating.reverse();
 
-
+  for (let s = 0; s < starsRatingReverse.length; s++) {
+    starsRatingReverse[s].addEventListener("click", function () {
+      for (let v = 0; v <= s; v++) {
+        starsRatingReverse[v].classList.add("starAfterClick");
+      }
+      for (let w = s + 1; w < starsRatingReverse.length; w++) {
+        starsRatingReverse[w].classList.remove("starAfterClick");
+      }
+    });
+  }
+};
+createStars();
