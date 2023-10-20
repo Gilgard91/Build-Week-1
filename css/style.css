@@ -626,3 +626,8 @@ h3 {
   margin: 0 auto;
   width: fit-content;
 }
+
+.segment,
+.ring {
+  transition: opacity 0.8s;
+}

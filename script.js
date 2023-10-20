@@ -16,8 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     selectDifficulty();
     const selectButton = document.querySelector(".select-button");
     selectButton.onclick = function () {
-      const selectedDifficulty =
-        document.querySelector(".custom-select").value;
+      const selectedDifficulty = document.querySelector(".custom-select").value;
       sessionStorage.setItem("difficulty", selectedDifficulty);
       window.location.href = "/questions.html";
     };
@@ -34,7 +33,7 @@ const selectDifficulty = function () {
   difficulty.classList.add("custom-select");
   const h1Difficulty = document.createElement("h1");
   h1Difficulty.setAttribute("id", "h1-difficulty");
-  h1Difficulty.innerText = "Please choose the difficulty:"
+  h1Difficulty.innerText = "Please choose the difficulty:";
   content.appendChild(h1Difficulty);
   content.appendChild(difficulty);
   const submitButton = document.createElement("button");
@@ -46,8 +45,10 @@ const selectDifficulty = function () {
   submitButtonDiv.setAttribute("id", "difficulty-button-div");
   submitButtonDiv.appendChild(submitButton);
   content.appendChild(submitButtonDiv);
-  document.getElementById("main-content").classList.add("main-content-difficulty");
-  document.getElementsByTagName("nav")[0].setAttribute("id", "nav-difficulty")
+  document
+    .getElementById("main-content")
+    .classList.add("main-content-difficulty");
+  document.getElementsByTagName("nav")[0].setAttribute("id", "nav-difficulty");
 };
 
 // QUESTIONS PAGE
@@ -289,7 +290,6 @@ const start = function () {
   }
 };
 
-
 const unselectPreviousButton = function () {
   const previouslySelectedAnswer = document.querySelector(".selected");
   if (previouslySelectedAnswer) {
@@ -315,6 +315,20 @@ const submitAnswer = function (question) {
   start();
 };
 
+let correctColor = "#00FFFF";
+let incorrectColor = "#D20094";
+let correctSegment = document.querySelector(".segment");
+let incorrectSegment = document.querySelector(".ring");
+
+function animateColors() {
+  correctSegment.style.opacity = 0;
+  incorrectSegment.style.opacity = 0;
+  setTimeout(function () {
+    correctSegment.style.opacity = 1;
+    incorrectSegment.style.opacity = 1;
+  }, 250);
+}
+
 const generateResult = function () {
   let mainContent = document.getElementById("box-domanda");
   mainContent.remove();
@@ -326,6 +340,7 @@ const generateResult = function () {
   let nav = document.getElementById("questions-nav");
   nav.style.marginBottom = "0";
   document.getElementById("chart-container").style.display = "block";
+  animateColors();
   let rightAnswers = document.getElementById("right-answers");
   rightAnswers.innerText = result + "/10 questions";
   let wrongAnswers = document.getElementById("wrong-answers");
