@@ -315,20 +315,6 @@ const submitAnswer = function (question) {
   start();
 };
 
-let correctColor = "#00FFFF";
-let incorrectColor = "#D20094";
-let correctSegment = document.querySelector(".segment");
-let incorrectSegment = document.querySelector(".ring");
-
-function animateColors() {
-  correctSegment.style.opacity = 0;
-  incorrectSegment.style.opacity = 0;
-  setTimeout(function () {
-    correctSegment.style.opacity = 1;
-    incorrectSegment.style.opacity = 1;
-  }, 250);
-}
-
 const generateResult = function () {
   let mainContent = document.getElementById("box-domanda");
   mainContent.remove();
@@ -340,7 +326,6 @@ const generateResult = function () {
   let nav = document.getElementById("questions-nav");
   nav.style.marginBottom = "0";
   document.getElementById("chart-container").style.display = "block";
-  animateColors();
   let rightAnswers = document.getElementById("right-answers");
   rightAnswers.innerText = result + "/10 questions";
   let wrongAnswers = document.getElementById("wrong-answers");
@@ -360,20 +345,31 @@ const generateResult = function () {
     document.getElementById(
       "result-text-div"
     ).innerHTML = `<h3 id='result-text-title'>
-    We are sorry! <br /><span id='result-text-span-failed'
+      We are sorry! <br /><span id='result-text-span-failed'
       >You failed the exam.</span
-    >
-  </h3>
-  <p id='result-text-p'>
-  Thank you for participating. <br> We are sure you will <br> get through it next time
-  </p>`;
+      >
+      </h3>
+      <p id='result-text-p'>
+      Thank you for participating. <br> We are sure you will <br> get through it next time
+      </p>`;
   }
 
   const segment = document.getElementsByClassName("ring")[0]; //Qui la svg viene modellata in base al risultato
   let totalPoints = questions.length;
-  let varPercent2 = (result / totalPoints) * 100;
-  let varPercent1 = ((totalPoints - result) / totalPoints) * 100;
-  segment.setAttribute("stroke-dasharray", `${varPercent1} ${varPercent2}`);
+  let correctPercent = (result / totalPoints) * 100;
+  let incorrectPercent = ((totalPoints - result) / totalPoints) * 100;
+  // segment.setAttribute("stroke-dasharray", `${varPercent1} ${varPercent2}`);
+  let correctColor = "#00FFFF";
+  let incorrectColor = "#D20094";
+  let correctSegment = document.querySelector(".segment");
+  let incorrectSegment = document.querySelector(".ring");
+
+  function animateColors() {
+    setTimeout(function () {
+      correctSegment.style = `stroke-dasharray: ${incorrectPercent} ${correctPercent};`;
+    }, 250);
+  }
+  animateColors();
 };
 const starsContainer = document.getElementById("stars-container");
 const starsRating = [];

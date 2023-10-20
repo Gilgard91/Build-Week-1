@@ -312,7 +312,7 @@ h3 {
   height: 100%;
 }
 
-.segment {
+.ring {
   filter: drop-shadow(0px 0px 1px black);
 }
 
@@ -629,5 +629,5 @@ h3 {
 
 .segment,
 .ring {
-  transition: opacity 0.8s;
+  transition: 5500ms;
 }
