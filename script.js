@@ -1,7 +1,7 @@
+// Welcome Page
 document.addEventListener("DOMContentLoaded", () => {
   const checkbox = document.getElementById("agree");
   const submitButton = document.getElementById("proceed");
-  console.log(checkbox);
   checkbox.addEventListener("change", function () {
     if (checkbox.checked) {
       submitButton.removeAttribute("disabled");
@@ -12,32 +12,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Difficulty selection page
   submitButton.onclick = function () {
     selectDifficulty();
     const selectButton = document.querySelector(".select-button");
     selectButton.onclick = function () {
-      const selectedDifficulty =
-        document.querySelector(".difficulty-select").value;
+      const selectedDifficulty = document.querySelector(".custom-select").value;
       sessionStorage.setItem("difficulty", selectedDifficulty);
       window.location.href = "/questions.html";
     };
   };
 });
+
 const selectDifficulty = function () {
   const difficulty = document.createElement("select");
   const content = document.querySelector(".content");
+  content.setAttribute("id", "difficulty-div");
   content.innerHTML = "";
-  // start();
   difficulty.innerHTML =
     "<option value='easy'>Easy</option> <option value='medium'>Medium</option> <option value='hard'>Hard</option>";
-  difficulty.classList.add("difficulty-select");
+  difficulty.classList.add("custom-select");
+  const h1Difficulty = document.createElement("h1");
+  h1Difficulty.setAttribute("id", "h1-difficulty");
+  h1Difficulty.innerText = "Please choose the difficulty:";
+  content.appendChild(h1Difficulty);
   content.appendChild(difficulty);
   const submitButton = document.createElement("button");
   submitButton.innerText = "START";
   submitButton.setAttribute("id", "proceed");
   submitButton.classList.add("active");
   submitButton.classList.add("select-button");
-  content.appendChild(submitButton);
+  const submitButtonDiv = document.createElement("div");
+  submitButtonDiv.setAttribute("id", "difficulty-button-div");
+  submitButtonDiv.appendChild(submitButton);
+  content.appendChild(submitButtonDiv);
+  document
+    .getElementById("main-content")
+    .classList.add("main-content-difficulty");
+  document.getElementsByTagName("nav")[0].setAttribute("id", "nav-difficulty");
 };
 
 // QUESTIONS PAGE
@@ -52,8 +64,8 @@ let questions = [
     incorrect_answers: [
       "Central Process Unit",
       "Computer Personal Unit",
-      "Central Processor Unit"
-    ]
+      "Central Processor Unit",
+    ],
   },
   {
     category: "Science: Computers",
@@ -62,7 +74,7 @@ let questions = [
     question:
       "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     correct_answer: "Final",
-    incorrect_answers: ["Static", "Private", "Public"]
+    incorrect_answers: ["Static", "Private", "Public"],
   },
   {
     category: "Science: Computers",
@@ -70,7 +82,7 @@ let questions = [
     difficulty: "easy",
     question: "The logo for Snapchat is a Bell.",
     correct_answer: "False",
-    incorrect_answers: ["True"]
+    incorrect_answers: ["True"],
   },
   {
     category: "Science: Computers",
@@ -79,7 +91,7 @@ let questions = [
     question:
       "Pointers were not used in the original C programming language; they were added later on in C++.",
     correct_answer: "False",
-    incorrect_answers: ["True"]
+    incorrect_answers: ["True"],
   },
   {
     category: "Science: Computers",
@@ -88,7 +100,7 @@ let questions = [
     question:
       "What is the most preferred image format used for logos in the Wikimedia database?",
     correct_answer: ".svg",
-    incorrect_answers: [".png", ".jpeg", ".gif"]
+    incorrect_answers: [".png", ".jpeg", ".gif"],
   },
   {
     category: "Science: Computers",
@@ -99,8 +111,8 @@ let questions = [
     incorrect_answers: [
       "Counter Strike: Source",
       "Corrective Style Sheet",
-      "Computer Style Sheet"
-    ]
+      "Computer Style Sheet",
+    ],
   },
   {
     category: "Science: Computers",
@@ -109,7 +121,7 @@ let questions = [
     question:
       "What is the code name for the mobile operating system Android 7.0?",
     correct_answer: "Nougat",
-    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"]
+    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
   },
   {
     category: "Science: Computers",
@@ -117,7 +129,7 @@ let questions = [
     difficulty: "easy",
     question: "On Twitter, what is the character limit for a Tweet?",
     correct_answer: "140",
-    incorrect_answers: ["120", "160", "100"]
+    incorrect_answers: ["120", "160", "100"],
   },
   {
     category: "Science: Computers",
@@ -125,7 +137,7 @@ let questions = [
     difficulty: "easy",
     question: "Linux was first created as an alternative to Windows XP.",
     correct_answer: "False",
-    incorrect_answers: ["True"]
+    incorrect_answers: ["True"],
   },
   {
     category: "Science: Computers",
@@ -134,8 +146,8 @@ let questions = [
     question:
       "Which programming language shares its name with an island in Indonesia?",
     correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Jakarta"]
-  }
+    incorrect_answers: ["Python", "C", "Jakarta"],
+  },
 ];
 
 window.onload = async function () {
@@ -157,20 +169,18 @@ const pullQuestions = async function (difficulty) {
 };
 
 const formatText = function (text) {
-  console.log(text);
   const rules = [
     { expression: /&quot;/g, replacement: '"' },
     { expression: /&#039;/g, replacement: "'" },
     { expression: /&lt;/g, replacement: "<" },
     { expression: /&gt;/g, replacement: ">" },
-    { expression: /&amp;/g, replacement: "&" }
+    { expression: /&amp;/g, replacement: "&" },
   ];
 
   let result;
   rules.forEach((rule) => {
     result = text.replaceAll(rule.expression, rule.replacement);
   });
-  console.log(result);
   return result;
 };
 
@@ -257,7 +267,6 @@ const generateAnswerBtn = function (shuffledAnswer) {
   answerBtn.onclick = (e) => {
     //ad ognuno dei bottoni assegno una funzione onclick
     selectedAnswer = shuffledAnswer; //salvo la risposta data in selectedAnswer
-    console.log(selectedAnswer);
     unselectPreviousButton();
     e.currentTarget.classList.add("selected"); //assegno lo stile al bottone selezionato
   };
@@ -266,10 +275,10 @@ const generateAnswerBtn = function (shuffledAnswer) {
 
 let i = 0;
 const start = function () {
-  // console.log(jsonDomande);
   //start() controlla che ci siano domande disponibili
   if (i > questions.length - 1) {
     generateResult();
+    clearInterval(timerInterval);
   } else {
     createQuestion(questions[i]); //chiamo il metodo createQuestion passandogli la domanda
     i++;
@@ -278,6 +287,7 @@ const start = function () {
   }
 };
 
+// Rendo la selezione della risposta univoca
 const unselectPreviousButton = function () {
   const previouslySelectedAnswer = document.querySelector(".selected");
   if (previouslySelectedAnswer) {
@@ -296,6 +306,7 @@ const shuffleArray = function (array) {
   return array;
 };
 
+// Incremento il punteggio complessivo delle risposte corrette
 const submitAnswer = function (question) {
   if (question.correct_answer === selectedAnswer) {
     result++;
@@ -303,6 +314,7 @@ const submitAnswer = function (question) {
   start();
 };
 
+// Generazione della pagina dei risultati
 const generateResult = function () {
   let mainContent = document.getElementById("box-domanda");
   mainContent.remove();
@@ -333,54 +345,75 @@ const generateResult = function () {
     document.getElementById(
       "result-text-div"
     ).innerHTML = `<h3 id='result-text-title'>
-    We are sorry! <br /><span id='result-text-span-failed'
+      We are sorry! <br /><span id='result-text-span-failed'
       >You failed the exam.</span
-    >
-  </h3>
-  <p id='result-text-p'>
-  Thank you for participating. <br> We are sure you will <br> get through it next time
-  </p>`;
+      >
+      </h3>
+      <p id='result-text-p'>
+      Thank you for participating. <br> We are sure you will <br> get through it next time
+      </p>`;
   }
 
-  const segment = document.getElementsByClassName("ring")[0]; //Qui la svg viene modellata in base al risultato
+  //Qui la svg viene modellata ed animata in base al risultato
   let totalPoints = questions.length;
-  let varPercent2 = (result / totalPoints) * 100;
-  let varPercent1 = ((totalPoints - result) / totalPoints) * 100;
-  segment.setAttribute("stroke-dasharray", `${varPercent1} ${varPercent2}`);
+  let correctPercent = (result / totalPoints) * 100;
+  let incorrectPercent = ((totalPoints - result) / totalPoints) * 100;
+
+  let correctSegment = document.querySelector(".segment");
+
+  function animateColors() {
+    setTimeout(function () {
+      correctSegment.style = `stroke-dasharray: ${incorrectPercent} ${correctPercent};`;
+    }, 250);
+  }
+  animateColors();
 };
-  const starsContainer = document.getElementById("stars-container");
-  const starsRating = [];
-  const createStars = function () {
-    for (let r = 0; r < 10; r++) {
-      const star = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      star.setAttribute("width", "47");
-      star.setAttribute("height", "46");
-      star.setAttribute("viewBox", "0 0 47 46");
-      star.classList.add("starBeforeClick");
-      starsRating.push(star);
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      path.setAttribute(
-        "d",
-        "M22.2044 1.55551C22.6143 0.569963 24.0104 0.569964 24.4203 1.55552L29.9874 14.9402C30.1602 15.3557 30.5509 15.6396 30.9994 15.6756L45.4494 16.834C46.5134 16.9193 46.9448 18.2471 46.1341 18.9415L35.1248 28.3722C34.7831 28.6649 34.6338 29.1242 34.7382 29.5619L38.1018 43.6626C38.3494 44.7009 37.2199 45.5215 36.309 44.9651L23.9379 37.4089C23.5538 37.1743 23.0709 37.1743 22.6868 37.4089L10.3157 44.9651C9.40478 45.5215 8.27528 44.7009 8.52295 43.6626L11.8865 29.5619C11.9909 29.1242 11.8416 28.6649 11.4999 28.3722L0.490575 18.9415C-0.320069 18.2471 0.111362 16.9193 1.17535 16.834L15.6253 15.6756C16.0738 15.6396 16.4645 15.3557 16.6374 14.9402L22.2044 1.55551Z"
-      );
-      path.setAttribute("fill", "#00FFFF");
-      star.appendChild(path);
-      starsContainer.appendChild(star);
-    }
-    const starsRatingReverse = starsRating.reverse();
-  
-    for (let s = 0; s < starsRatingReverse.length; s++) {
-      starsRatingReverse[s].addEventListener("click", function () {
-        for (let v = 0; v <= s; v++) {
-          starsRatingReverse[v].classList.add("starAfterClick");
-        }
-        for (let w = s + 1; w < starsRatingReverse.length; w++) {
-          starsRatingReverse[w].classList.remove("starAfterClick");
-        }
-      });
-    }
-  };
-  createStars();
-  
 
+// Feedback page
+const starsContainer = document.getElementById("stars-container");
+const starsRating = [];
+const createStars = function () {
+  for (let r = 0; r < 10; r++) {
+    const star = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    star.setAttribute("width", "47");
+    star.setAttribute("height", "46");
+    star.setAttribute("viewBox", "0 0 47 46");
+    star.classList.add("starBeforeClick");
+    starsRating.push(star);
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute(
+      "d",
+      "M22.2044 1.55551C22.6143 0.569963 24.0104 0.569964 24.4203 1.55552L29.9874 14.9402C30.1602 15.3557 30.5509 15.6396 30.9994 15.6756L45.4494 16.834C46.5134 16.9193 46.9448 18.2471 46.1341 18.9415L35.1248 28.3722C34.7831 28.6649 34.6338 29.1242 34.7382 29.5619L38.1018 43.6626C38.3494 44.7009 37.2199 45.5215 36.309 44.9651L23.9379 37.4089C23.5538 37.1743 23.0709 37.1743 22.6868 37.4089L10.3157 44.9651C9.40478 45.5215 8.27528 44.7009 8.52295 43.6626L11.8865 29.5619C11.9909 29.1242 11.8416 28.6649 11.4999 28.3722L0.490575 18.9415C-0.320069 18.2471 0.111362 16.9193 1.17535 16.834L15.6253 15.6756C16.0738 15.6396 16.4645 15.3557 16.6374 14.9402L22.2044 1.55551Z"
+    );
+    path.setAttribute("fill", "#00FFFF");
+    star.appendChild(path);
+    starsContainer.appendChild(star);
+  }
+  const starsRatingReverse = starsRating.reverse();
+  const textAreaContainer = document.getElementById("text-area-container");
+  const feedbackP = document.createElement("p");
+  feedbackP.classList.add("feedback-p");
+  const rating = document.getElementsByClassName("starAfterClick");
 
+  for (let s = 0; s < starsRatingReverse.length; s++) {
+    starsRatingReverse[s].addEventListener("click", function () {
+      for (let v = 0; v <= s; v++) {
+        starsRatingReverse[v].classList.add("starAfterClick");
+      }
+
+      for (let w = s + 1; w < starsRatingReverse.length; w++) {
+        starsRatingReverse[w].classList.remove("starAfterClick");
+      }
+      if (rating.length > 5 || rating.length === 10) {
+        feedbackP.innerText =
+          "Thank you for your feedback! Please tell us what you liked!";
+        textAreaContainer.appendChild(feedbackP);
+      } else if (rating.length < 6 && rating.length !== 0) {
+        feedbackP.innerText =
+          "We are sorry to hear this. Please tell us what went wrong!";
+        textAreaContainer.appendChild(feedbackP);
+      }
+    });
+  }
+};
+createStars();
