@@ -32,6 +32,7 @@ h1 {
   margin-bottom: 0.5em;
   font-weight: 400;
   line-height: 65px;
+  color: rgb(240, 240, 240);
 }
 
 .instructions h2 {
@@ -40,6 +41,14 @@ h1 {
   font-weight: 700;
   color: #d20094;
   margin-bottom: 0.1em;
+}
+
+.instructions p {
+  color: rgb(240, 240, 240);
+}
+
+#answerYourself {
+  color: rgb(240, 240, 240);
 }
 
 p {
@@ -154,6 +163,7 @@ img {
   font-size: 25px;
   letter-spacing: 0.3rem;
   min-width: 278px;
+  color: rgb(240, 240, 240);
 }
 
 #question-span {
@@ -185,7 +195,7 @@ h3 {
   height: 90px;
   width: 440px;
   margin: 0.3em 0.5em;
-  color: white;
+  color: rgb(240, 240, 240);
   background-color: #ffffff1a;
   box-shadow: inset 2px 2px 3px 1px;
 }
@@ -504,13 +514,14 @@ h3 {
 #ratingPage h2 {
   font-weight: 700;
   font-size: 60px;
-  color: #e9e7ed;
+  color: rgb(240, 240, 240);
 }
 
 #ratingPage h4 {
   font-size: 30px;
   font-weight: 300;
   margin-top: 0;
+  color: rgb(240, 240, 240);
 }
 
 #ratingPage footer {
@@ -554,10 +565,64 @@ h3 {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-#main-feedback{
+#main-feedback {
   padding-top: 2.5em;
+}
+
+.custom-select {
+  font-family: "Outfit", sans-serif;
+  font-size: 25px;
+
+  padding: 0.2em 1em;
+  text-align: left;
+
+  margin-bottom: 7.3em;
+  background-color: transparent;
+  color: rgb(240, 240, 240);
+  cursor: pointer;
+}
+
+.custom-select option {
+  background-color: rgb(255, 255, 255);
+  color: #333;
+}
+
+.custom-select option:checked {
+  color: #333;
+}
+
+.select-button {
+  display: block;
+}
+
+#difficulty-div {
+  text-align: center;
+  display: inline-block;
+}
+
+.main-content-difficulty {
+  text-align: center;
+}
+
+#nav-difficulty {
+  text-align: left;
+}
+
+#h1-difficulty {
+  font-size: 40px;
+  margin-bottom: 1em;
+  color: rgb(240, 240, 240);
+}
+
+#difficulty-button-div {
+  margin: 0 auto;
+  width: fit-content;
 }
