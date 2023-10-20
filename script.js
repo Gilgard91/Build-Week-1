@@ -388,14 +388,29 @@ const createStars = function () {
     starsContainer.appendChild(star);
   }
   const starsRatingReverse = starsRating.reverse();
+  const textAreaContainer = document.getElementById("text-area-container");
+  const feedbackP = document.createElement("p");
+  feedbackP.classList.add("feedback-p");
+  const rating = document.getElementsByClassName("starAfterClick");
 
   for (let s = 0; s < starsRatingReverse.length; s++) {
     starsRatingReverse[s].addEventListener("click", function () {
       for (let v = 0; v <= s; v++) {
         starsRatingReverse[v].classList.add("starAfterClick");
       }
+
       for (let w = s + 1; w < starsRatingReverse.length; w++) {
         starsRatingReverse[w].classList.remove("starAfterClick");
+      }
+      console.log(rating);
+      if (rating.length > 5 || rating.length === 10) {
+        feedbackP.innerText =
+          "Thank you for your feedback! Please tell us what you liked!";
+        textAreaContainer.appendChild(feedbackP);
+      } else if (rating.length < 6 && rating.length !== 0) {
+        feedbackP.innerText =
+          "We are sorry to hear this. Please tell us what went wrong!";
+        textAreaContainer.appendChild(feedbackP);
       }
     });
   }

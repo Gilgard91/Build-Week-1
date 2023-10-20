@@ -631,3 +631,9 @@ h3 {
 .ring {
   transition: 1500ms;
 }
+
+.feedback-p {
+  font-family: inherit;
+  margin: 0.5em 0 0 0;
+  transition: 500ms;
+}
