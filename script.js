@@ -275,6 +275,17 @@ const generateAnswerBtn = function (shuffledAnswer) {
   return answerBtn;
 };
 
+const shuffleArray = function (array) {
+  //creo una funzione shuffle per randomizzare la disposizione delle risposte
+  if (array.length > 2) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+  return array;
+};
+
 let i = 0;
 const start = function () {
   // console.log(jsonDomande);
@@ -294,17 +305,6 @@ const unselectPreviousButton = function () {
   if (previouslySelectedAnswer) {
     previouslySelectedAnswer.classList.remove("selected");
   }
-};
-
-const shuffleArray = function (array) {
-  //creo una funzione shuffle per randomizzare la disposizione delle risposte
-  if (array.length > 2) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  }
-  return array;
 };
 
 const submitAnswer = function (question) {
